@@ -1,9 +1,9 @@
-package aufgabe5;
-import de.tudarmstadt.gdi1.project.Factory;
+package de.tudarmstadt.gdi1.project;
 
 import java.util.Collection;
 import java.util.List;
 
+import aufgabe5.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
