@@ -1,17 +1,20 @@
-package kaese;
+package aufgabe5;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class Aufgabe52 implements Alphabet{
-	
+
+public class AlphabetImpl implements Alphabet{
+
 	 private ArrayList<Character> list;
+	 
 	    /**
 	    *Konstruktor für ein Alphabet
 	    *@param chars Geordnete Liste der Alphabets
 	    **/
-	    public Aufgabe52 (Collection <Character> chars) {
+	    public AlphabetImpl (Collection <Character> chars) {
 	    	
 	        super();
 	        list = new ArrayList<Character>();
@@ -25,8 +28,11 @@ public class Aufgabe52 implements Alphabet{
 	        }
 	    }
 	    public int getIndex(char chr) {
+	    	if (list.contains(chr))
 	            return list.indexOf(chr);
+	    	else return -1;
 	        }
+	    
 	    
 	    public char getChar(int index) {
 	        return  list.get(index);
@@ -39,8 +45,8 @@ public class Aufgabe52 implements Alphabet{
 	    public boolean contains(char chr) {
 	            return list.contains(chr);
 	        }
-	    public boolean allows(String word) {
-	        
+	    
+	    public boolean allows(String word) {	       
 	            char[] chars = word.toCharArray();
 	            
 	            for (char c : chars) {
@@ -49,11 +55,11 @@ public class Aufgabe52 implements Alphabet{
 	            }
 	            return true;
 	        }
+	    
 	     public String normalize(String input)  {
-	        
-	            char[] chars = input.toCharArray();
-	            
+	            char[] chars = input.toCharArray();	            
 	            String result = "";
+	            
 	            for (char c : chars) {
 	                if (contains(c)) {
 	                    
@@ -78,9 +84,9 @@ public class Aufgabe52 implements Alphabet{
 	    
 	        int index;
 	    
-	        Aufgabe52 alphabet;
+	        AlphabetImpl alphabet;
 	    
-	        public AlphabetIterator(Aufgabe52 alphabet) {
+	        public AlphabetIterator(AlphabetImpl alphabet) {
 	           this.alphabet = alphabet;
 	           index = 0;
 	           
@@ -105,5 +111,4 @@ public class Aufgabe52 implements Alphabet{
 	        }
 	    
 	    }
-	    
 }

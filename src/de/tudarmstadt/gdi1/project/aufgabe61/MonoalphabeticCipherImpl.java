@@ -1,15 +1,15 @@
 package aufgabe61;
 
-import kaese.Aufgabe52;
+import aufgabe5.AlphabetImpl;
 
-public class MonoalphabeticCipherImpl extends Aufgabe61{
+public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl{
 	
-	protected Aufgabe52 src;
-	protected Aufgabe52 dest;	
+	protected AlphabetImpl src;
+	protected AlphabetImpl dest;	
 		
 	
 
-    public MonoalphabeticCipherImpl (Aufgabe52 src, Aufgabe52 dest) {
+    public MonoalphabeticCipherImpl (AlphabetImpl src, AlphabetImpl dest) {
         
         //Alphabete müssen gleich lang sein
         
