@@ -1,12 +1,8 @@
 package aufgabe61;
-
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
 
-
-public abstract class Aufgabe61 implements SubstitutionCipher {
-	
-
-	public Aufgabe61(){
+public abstract class SubstitutionCipherImpl implements SubstitutionCipher{
+	public SubstitutionCipherImpl(){
 
 	}
 	

@@ -1,4 +1,4 @@
-package kaese;
+package aufgabe5;
 import de.tudarmstadt.gdi1.project.Factory;
 
 import java.util.Collection;
@@ -33,7 +33,7 @@ public class FactoryIM implements Factory{
     }
     
     public Alphabet getAlphabetInstance(Collection<Character> characters) {
-        return new Aufgabe52(characters);
+        return new AlphabetImpl(characters);
     }
     public Dictionary getDictionaryInstance(Alphabet alphabet, String text) {
         return null;
