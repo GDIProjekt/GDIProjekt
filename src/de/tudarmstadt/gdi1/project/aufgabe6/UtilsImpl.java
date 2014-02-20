@@ -26,7 +26,7 @@ public class UtilsImpl extends utils.Utils {
     	Character[] reversedChars = new Character[a.size()];
         for (int i = 0; i < a.size(); i++) {
            
-           int newIndex = a.size() - i;
+           int newIndex = a.size() - i -1;
            
            reversedChars[newIndex] = a.getChar(i);
         }
