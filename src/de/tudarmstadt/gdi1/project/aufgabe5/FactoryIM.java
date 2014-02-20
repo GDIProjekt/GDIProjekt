@@ -26,6 +26,12 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.Polyalphab
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.Vigenere;
 import de.tudarmstadt.gdi1.project.utils.Utils;
 
+/**
+ * Implementierung des Factory Interfaces.
+ * 
+ * @author .., .., .., Laurin Strelow
+ *
+ */
 public class FactoryIM implements Factory{
 	
     public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {
@@ -40,10 +46,10 @@ public class FactoryIM implements Factory{
     }
 
     public MonoalphabeticCipher getMonoalphabeticCipherInstance(Alphabet source, Alphabet dest) {
-        return null;
+        return new MonoalphabeticCipherImpl(source, dest);
     }
     public Caesar getCaesarInstance(int key, Alphabet alphabet) {
-        return null;
+        return new CeasatImpl(alphabet, key);
     }
     public KeywordMonoalphabeticCipher getKeywordMonoalphabeticCipherInstance(String key, Alphabet alphabet) {
         return null;
