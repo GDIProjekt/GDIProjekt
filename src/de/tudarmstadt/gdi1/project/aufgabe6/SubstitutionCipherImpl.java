@@ -1,4 +1,5 @@
-package aufgabe61;
+package aufgabe6;
+
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
 
 /**
@@ -7,7 +8,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
  * @author Laurin Strelow
  *
  */
-public abstract class SubstitutionCipherImpl implements cipher.substitution.SubstitutionCipher {
+public abstract class SubstitutionCipherImpl implements SubstitutionCipher {
 
 	
 	public String encrypt(String text){

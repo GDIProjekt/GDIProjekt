@@ -1,4 +1,7 @@
 .DS_Store
+.classpath
+.xml
+.prefs
 
 # Java class files
 *.class

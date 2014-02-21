@@ -1,13 +1,16 @@
-package aufgabe61;
+package aufgabe6;
 
-import aufgabe5.AlphabetImpl;
+import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
+
+import aufgabe6.SubstitutionCipherImpl;
 
 /**
  * Implementierung des SubstitutionCipher Interfaces
  * @author .., .., .., Laurin Strelow
  *
  */
-public abstract MonoalphabeticCipherImpl implements cipher.substitution.monoalphabetic.MonoalphabeticCipher extends SubstitutionCipherImpl {
+public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements MonoalphabeticCipher {
 	
 	private Alphabet src;
 	private Alphabet dest;	
@@ -30,7 +33,7 @@ public abstract MonoalphabeticCipherImpl implements cipher.substitution.monoalph
 	public char translate(char chr, int i){
     	
     	if (!src.contains(chr))
-    		throws new IllegalArgumentException("Character is not in src Alphabet");
+    		throw new IllegalArgumentException("Character is not in src Alphabet");
     	
     	return dest.getChar(src.getIndex(chr));
 	}
@@ -38,9 +41,10 @@ public abstract MonoalphabeticCipherImpl implements cipher.substitution.monoalph
     @Override
 	public char reverseTranslate(char chr, int i){
     	if (!dest.contains(chr))
-    		throws new IllegalArgumentException("Chracter is not in dest Alphabet");
+    		throw new IllegalArgumentException("Chracter is not in dest Alphabet");
     	
     	return src.getChar(dest.getIndex(chr));
 	}
+
 	
 }

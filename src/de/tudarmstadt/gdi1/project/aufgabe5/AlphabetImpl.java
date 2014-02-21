@@ -26,14 +26,14 @@ public class AlphabetImpl implements Alphabet{
 	        
 	        for (Character c : chars) {
 	            if (list.contains(c)) 
-	              throws new IllegalArgumentException("Character only once in Alphabet....");
+	              throw new IllegalArgumentException("Character only once in Alphabet....");
 	        }
 	    }
 	    
 	    public int getIndex(char chr) {
 	    	int result = list.indexOf(chr);
 	    	if (result == -1)
-	    		throws new IllegalArgumentExecption("Charcter is not in Alphabet");
+	    		throw new IllegalArgumentException("Charcter is not in Alphabet");
 	    	else 
 	    		return result;
 	    }
@@ -82,7 +82,8 @@ public class AlphabetImpl implements Alphabet{
 	    	char[] result = new char[size()];
 	    	
 	    	int i = 0;
-	    	for (Character c : list) {
+	    	
+	    	for (i = 0; i < list.size(); i++) {
 	    		result[i] = getChar(i);
 	    		
 	    		i++;

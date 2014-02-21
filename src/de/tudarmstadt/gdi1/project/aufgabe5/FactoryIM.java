@@ -4,6 +4,10 @@ import de.tudarmstadt.gdi1.project.Factory;
 import java.util.Collection;
 import java.util.List;
 
+import aufgabe5.AlphabetImpl;
+import aufgabe6.CaersarImpl;
+import aufgabe6.MonoalphabeticCipherImpl;
+
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
@@ -46,10 +50,10 @@ public class FactoryIM implements Factory{
     }
 
     public MonoalphabeticCipher getMonoalphabeticCipherInstance(Alphabet source, Alphabet dest) {
-        return new MonoalphabeticCipherImpl(source, dest);
+        return new MonoalphabeticCipherImpl (source, dest);
     }
     public Caesar getCaesarInstance(int key, Alphabet alphabet) {
-        return new CeasatImpl(alphabet, key);
+        return new CaersarImpl(alphabet, key);
     }
     public KeywordMonoalphabeticCipher getKeywordMonoalphabeticCipherInstance(String key, Alphabet alphabet) {
         return null;

@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 import de.tudarmstadt.gdi1.project.test.analysis.monoalphabetic.TemplateCribCryptanalysisTests;
 
 @RunWith(Suite.class)

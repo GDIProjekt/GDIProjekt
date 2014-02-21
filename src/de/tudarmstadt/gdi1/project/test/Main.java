@@ -9,6 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 
 
+import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 import de.tudarmstadt.gdi1.project.test.alphabet.TemplateAlphabetTests;
 import de.tudarmstadt.gdi1.project.test.alphabet.TemplateDictionaryTests;
 import de.tudarmstadt.gdi1.project.test.alphabet.TemplateDistributionTests;
