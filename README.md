@@ -1,3 +1,5 @@
 GDIProjekt
 ==========
-Aufgabe 5.2 fehlen noch Exceptions und die letzte Prozedur
+Aufgabe 5 FERTIG
+Aufgabe 6 FERTIG
+Aufgabe 7 7.2
