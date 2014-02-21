@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.List;
 
 import aufgabe5.AlphabetImpl;
+import aufgabe61.*;
+
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
@@ -40,13 +42,13 @@ public class FactoryIM implements Factory{
     }
 
     public MonoalphabeticCipher getMonoalphabeticCipherInstance(Alphabet source, Alphabet dest) {
-        return null;
+        return new MonoalphabeticCipherImpl(source, dest);
     }
     public Caesar getCaesarInstance(int key, Alphabet alphabet) {
-        return null;
+        return new CaesarImpl(key, alphabet);
     }
     public KeywordMonoalphabeticCipher getKeywordMonoalphabeticCipherInstance(String key, Alphabet alphabet) {
-        return null;
+        return new KeywordMonoalphabeticCipherImpl(key, alphabet);
     }
     public PolyalphabeticCipher getPolyalphabeticCipherInstance(Alphabet source, Alphabet... dest) {
         return null;
@@ -85,7 +87,7 @@ public class FactoryIM implements Factory{
         return null;
     }
     public Class<? extends SubstitutionCipher> getAbstractSubstitutionCipherClass() {
-        return null;
+        return  null;
     }
     public ValidateDecryptionOracle getValidateDecryptionOracle(Distribution distribution, Dictionary dictionary) {
         return null;
