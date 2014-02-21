@@ -23,20 +23,16 @@ public class AlphabetImpl implements Alphabet{
 	    	
 	        super();
 	        list = new ArrayList<Character>();
-	        try{
+	      
 	        	for (Character c : chars) {
 	        		if (!list.contains(c)) {
 	        			list.add(c);
 	        		}
 	        		else {
-	        			throw dc;	        		
+	        			throw new IllegalArgumentException("Error: At least one character in given alphabet appears twice.");	        		
 	        		}
 	        	}
-	        }
-	        catch(doubleChars dc){
-	        	//System.err.println("Error: At least one character in given alphabet appears twice.");
-
-	        }
+	       
 	        }
 	    
 	    

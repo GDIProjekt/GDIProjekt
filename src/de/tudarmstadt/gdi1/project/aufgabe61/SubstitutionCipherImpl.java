@@ -2,16 +2,14 @@ package aufgabe61;
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
 
 public abstract class SubstitutionCipherImpl implements SubstitutionCipher{
-	public SubstitutionCipherImpl(){
 
-	}
 	
 	/**
 	 * Encrypt a text according to the encryption method of the cipher
 	 * @param text the plaintext to encrypt
 	 * @return the encrypted plaintext (=ciphertext)
 	 */
-	public String encrypt(String text){
+	public final String encrypt(String text){
 		char[] textchar = text.toCharArray();
 		String result = "";
 		int i = 0;
@@ -27,7 +25,7 @@ public abstract class SubstitutionCipherImpl implements SubstitutionCipher{
 	 * @param text the ciphertext to decrypt
 	 * @return the decrypted ciphertext (=plaintext)
 	 */
-	public String decrypt(String text){
+	public final String decrypt(String text){
 		char[] textchar = text.toCharArray();
 		String result = "";
 		int i = 0;
