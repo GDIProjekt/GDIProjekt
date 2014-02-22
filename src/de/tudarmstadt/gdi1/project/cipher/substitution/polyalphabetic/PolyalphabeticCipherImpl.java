@@ -31,6 +31,9 @@ public class PolyalphabeticCipherImpl extends SubstitutionCipherImpl implements
 		
 		int index = sourceAlphabet.getIndex(chr);
 		
+		if (index == -1)
+			throw new IllegalArgumentException("Character is not in alphabet");
+		
 		int alphabetIndex = i%destAlphabets.length;
 		
 		Alphabet dest = destAlphabets[alphabetIndex];
@@ -46,6 +49,9 @@ public class PolyalphabeticCipherImpl extends SubstitutionCipherImpl implements
 		Alphabet dest = destAlphabets[alphabetIndex];
 		
 		int index = dest.getIndex(chr);
+		
+		if (index == -1)
+			throw new IllegalArgumentException("Character is not in alphabet");
 		
 		return sourceAlphabet.getChar(index);
 	}

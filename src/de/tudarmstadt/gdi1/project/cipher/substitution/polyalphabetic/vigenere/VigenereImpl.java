@@ -31,7 +31,7 @@ public class VigenereImpl extends PolyalphabeticCipherImpl implements Vigenere {
 	private static Alphabet[] createDestAlphabets(String key, Alphabet src) {
 		
 		if (key.length() == 0)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("key.length() needs length > 0");
 		
 		Alphabet[] dests = new Alphabet[key.length()];
 	

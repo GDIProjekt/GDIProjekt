@@ -41,7 +41,7 @@ import de.tudarmstadt.gdi1.project.test.utils.TemplateUtilsTests;
 	TemplateKeywordMonoalphabeticCipherTests.class,
 	TemplateMonoalphabeticCipherTests.class,
 	TemplatePolyalphabeticCipherTests.class,
-	//TemplateSubstitutionCipherTests.class,!!!
+	//TemplateSubstitutionCipherTests.class, FIXME!!!
 	TemplateVigenereCipherTests.class,
 	
 	/* analysis */
