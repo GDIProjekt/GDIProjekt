@@ -7,11 +7,13 @@ import org.junit.runners.Suite.SuiteClasses;
 //import de.tudarmstadt.gdi1.project.test.alphabet.TemplateObjectWithFrequencyTests;
 //import de.tudarmstadt.gdi1.project.test.analysis.TemplateEncryptionOracleTests;
 
+import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
+
 @RunWith(Suite.class)
 @SuiteClasses({
 	Main.class,
-	TestMonoalphabeticCribAnalysis.class,
-	TestMonoalphabeticKCAnalysis.class
+	//TestMonoalphabeticCribAnalysis.class,
+	//TestMonoalphabeticKCAnalysis.class
 	})
 public class TestAll {
 
