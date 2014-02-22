@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 
@@ -20,11 +21,12 @@ public class DistributionImpl implements Distribution{
 	Map<String,Integer> charsWFreq = new HashMap<String,Integer>();
 	Map<String,Integer> charsWFreqSorted = new HashMap<String,Integer>();
 	
-	private static Map sortByValues(Map unsortMap) {
+	@SuppressWarnings("rawtypes")
+	private static Map sortByValues( Map unsortMap) {
 		 
+		@SuppressWarnings("unchecked")
 		List list = new LinkedList(unsortMap.entrySet());
  
-		// sort list based on comparator
 		Collections.sort(list, new Comparator() {
 			public int compare(Object o1, Object o2) {
 			
@@ -32,8 +34,7 @@ public class DistributionImpl implements Distribution{
 			}
 		});
  
-		// put sorted list into map again
-                //LinkedHashMap make sure order in which keys were inserted
+		
 		Map sortedMap = new LinkedHashMap();
 		for (Iterator it = list.iterator(); it.hasNext();) {
 			Map.Entry entry = (Map.Entry) it.next();
@@ -81,7 +82,7 @@ public class DistributionImpl implements Distribution{
 	public List<String> getSorted(int length){
 		List<String> strings = new ArrayList<String>();
 		String[] temp = new String[charsWFreqSorted.size()];
-		//String[] s = charsWFreqSorted.keySet().toArray();
+	
 		int i = charsWFreqSorted.size()-1;
 		for (String s : charsWFreqSorted.keySet()){
 			temp[i] = s;
