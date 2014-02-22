@@ -1,14 +1,13 @@
-package aufgabe6;
+package de.tudarmstadt.gdi1.project.cipher.monoalphabetic;
 
 import java.util.ArrayList;
 
-import aufgabe5.AlphabetImpl;
-import aufgabe6.MonoalphabeticCipherImpl;
-import aufgabe6.UtilsImpl;
-
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
+import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
 import de.tudarmstadt.gdi1.project.utils.Utils;
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
  * 

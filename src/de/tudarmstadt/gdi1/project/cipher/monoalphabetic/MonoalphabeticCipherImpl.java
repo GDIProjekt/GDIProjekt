@@ -1,9 +1,8 @@
-package aufgabe6;
+package de.tudarmstadt.gdi1.project.cipher.monoalphabetic;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
-
-import aufgabe6.SubstitutionCipherImpl;
 
 /**
  * Implementierung des SubstitutionCipher Interfaces
@@ -16,9 +15,9 @@ public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements 
 	private Alphabet dest;	
 	
 	/**
-	 * Konstruktor für MonoalphabeticCipherImpl.
-	 * @param src Das Ausgangs Alphabet von dem Verschlüsselt werden soll. (Klartext)
-	 * @param dest Das Alphabet zu dem hin verschlüsselt werden soll. (Chiffretext)
+	 * Konstruktor fuer MonoalphabeticCipherImpl.
+	 * @param src Das Ausgangs Alphabet von dem Verschluesselt werden soll. (Klartext)
+	 * @param dest Das Alphabet zu dem hin verschluesselt werden soll. (Chiffretext)
 	 */
     public MonoalphabeticCipherImpl (Alphabet src, Alphabet dest) {
         

@@ -12,8 +12,8 @@ import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 @RunWith(Suite.class)
 @SuiteClasses({
 	Main.class,
-	TestMonoalphabeticCribAnalysis.class,
-	TestMonoalphabeticKCAnalysis.class
+	//TestMonoalphabeticCribAnalysis.class,
+	//TestMonoalphabeticKCAnalysis.class
 	})
 public class TestAll {
 

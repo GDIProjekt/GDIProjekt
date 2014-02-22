@@ -1,15 +1,12 @@
-package aufgabe6;
+package de.tudarmstadt.gdi1.project.utils;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import aufgabe5.AlphabetImpl;
-
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import de.tudarmstadt.gdi1.project.utils.*;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 
 
 /**
@@ -23,11 +20,12 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
         
     	Character[] shiftedChars = new Character[a.size()];
     	
-        if (k %a.size() == 0) 
+        if (k%a.size() == 0) 
         	return a; //throws new IllegalArgumentException("Shift results in same Alphabet");
-    
+        
         for (int i = 0; i < a.size(); i++) {
-            int newIndex = (i-k)%a.size();   
+            int newIndex = Math.abs((a.size() + i - k)%a.size());
+            
             shiftedChars[newIndex] = a.getChar(i);
         }
         return new AlphabetImpl(Arrays.asList(shiftedChars));
@@ -52,7 +50,7 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
     
         Arrays.fill(randomizedChars, null);
         
-        Random randomGenerator = new Random(); //TODO other random generator
+        Random randomGenerator = new Random();
         
         for (int i = 0; i < a.size(); i++) {
         	

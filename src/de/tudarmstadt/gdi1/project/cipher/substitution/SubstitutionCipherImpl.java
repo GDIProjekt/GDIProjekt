@@ -1,4 +1,4 @@
-package aufgabe6;
+package de.tudarmstadt.gdi1.project.cipher.substitution;
 
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
 

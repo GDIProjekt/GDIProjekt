@@ -1,4 +1,5 @@
-package aufgabe5;
+package de.tudarmstadt.gdi1.project.alphabet;
+
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 
 import java.util.ArrayList;
@@ -6,7 +7,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Eine Implementierung für das Alphabet Interface.
+ * Eine Implementierung fuer das Alphabet Interface.
  * 
  * @author ....,..,..., Laurin Strelow
  *
@@ -17,7 +18,7 @@ public class AlphabetImpl implements Alphabet{
 	 
 	    /**
 	    *Konstruktor fuer ein Alphabet
-	    *@param chars Eine Collection in der die Buchstaben als Character übergeben werden.
+	    *@param chars Eine Collection in der die Buchstaben als Character uebergeben werden.
 	    **/
 	    public AlphabetImpl (Collection <Character> chars) {
 	    	
@@ -27,15 +28,13 @@ public class AlphabetImpl implements Alphabet{
 	        for (Character c : chars) {
 	            if (list.contains(c)) 
 	              throw new IllegalArgumentException("Character only once in Alphabet....");
+	            else
+	            	list.add(c);
 	        }
 	    }
 	    
 	    public int getIndex(char chr) {
-	    	int result = list.indexOf(chr);
-	    	if (result == -1)
-	    		throw new IllegalArgumentException("Charcter is not in Alphabet");
-	    	else 
-	    		return result;
+	    	return list.indexOf(chr);
 	    }
 	    
 	    
@@ -98,7 +97,7 @@ public class AlphabetImpl implements Alphabet{
 	    }
 	    
 	    /**
-	     * Klasse für die Implementierug des Iterator Infterfaces, wird gebraucht für das Iterable Interface vom Alphabet.
+	     * Klasse fuer die Implementierug des Iterator Infterfaces, wird gebraucht fuer das Iterable Interface vom Alphabet.
 	     * @author ..., .., .., Laurin Strelow
 	     *
 	     */
@@ -109,8 +108,8 @@ public class AlphabetImpl implements Alphabet{
 	        AlphabetImpl alphabet;
 	    
 	        /**
-	         * Konstruktor für den Alphabet Iterator
-	         * @param alphabet Das AlphabetImpl über das iteriert werden soll.
+	         * Konstruktor fuer den Alphabet Iterator
+	         * @param alphabet Das AlphabetImpl ueber das iteriert werden soll.
 	         */
 	        public AlphabetIterator(AlphabetImpl alphabet) {
 	           this.alphabet = alphabet;
@@ -119,7 +118,7 @@ public class AlphabetImpl implements Alphabet{
 	        }
 	    
 	        @Override
-	        public boolean hasNext() {
+	        public boolean hasNext() { 
 	            return (index < alphabet.size());
 	        }
 	    
@@ -128,13 +127,15 @@ public class AlphabetImpl implements Alphabet{
 	            
 	            if (index < alphabet.size())
 	                return alphabet.getChar(index++);
-	            else
+	            else 
 	                return null;
+	            
 	        }
 	    
 	        @Override
 	        public void remove() {
-	        	//TODO ???
+	        	throw new UnsupportedOperationException();
+	        	/**Man kann den Inhalt des Alphabets nachtraeglich nicht mehr aendern, daher die Exception*/
 	        }
 	    
 	    }
