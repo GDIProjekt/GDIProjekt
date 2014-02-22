@@ -3,6 +3,8 @@
 .xml
 .prefs
 
+.settings/
+
 # Java class files
 *.class
 
