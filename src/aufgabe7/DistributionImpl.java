@@ -1,33 +1,71 @@
 package aufgabe7;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
-
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 
 public class DistributionImpl implements Distribution{
-	int[] charFrequency;
+	
+	String text;
 	List<String> charFreq = new ArrayList<String>();
 	Alphabet source;
+	Map<String,Integer> charsWFreq = new HashMap<String,Integer>();
+	Map<String,Integer> charsWFreqSorted = new HashMap<String,Integer>();
+	
+	private static Map sortByValues(Map unsortMap) {
+		 
+		List list = new LinkedList(unsortMap.entrySet());
+ 
+		// sort list based on comparator
+		Collections.sort(list, new Comparator() {
+			public int compare(Object o1, Object o2) {
+			
+				return ((Comparable) ((Map.Entry) (o1)).getValue()).compareTo(((Map.Entry) (o2)).getValue());
+			}
+		});
+ 
+		// put sorted list into map again
+                //LinkedHashMap make sure order in which keys were inserted
+		Map sortedMap = new LinkedHashMap();
+		for (Iterator it = list.iterator(); it.hasNext();) {
+			Map.Entry entry = (Map.Entry) it.next();
+			sortedMap.put(entry.getKey(), entry.getValue());
+		}
+		return sortedMap;
+	}
+ 
 	
 	
 	public DistributionImpl(Alphabet source, String text, int ngramsize){
-		charFrequency = new int[source.size()];
+		
 		this.source = source;
+		this.text = text;
 		for(int i = 0; i < source.size(); i++){
 			int counter = 0;
+			String tempchar = "";
 			for (int j = 0; j < text.length(); j++){
 				
 				if (source.contains(text.charAt(j))){
 					
 					if (text.charAt(j)==source.getChar(i)) 
-						counter++;
+						counter = counter +1;
 				}
 			}			
-			charFrequency[i] = counter;
+	
+			tempchar += source.getChar(i);
+			charsWFreq.put(tempchar, counter);
+			
 			
 		}
+		charsWFreqSorted = sortByValues(charsWFreq);
 	}
 	
 	/**
@@ -42,16 +80,17 @@ public class DistributionImpl implements Distribution{
 	 */
 	public List<String> getSorted(int length){
 		List<String> strings = new ArrayList<String>();
-		for (int i = 0; i < charFrequency.length; i++){
-			
-			for (int j = i+1; j < charFrequency.length; j++){
-				if (charFrequency[i] > charFrequency[j]){
-				
-				}
-			}
-		
+		String[] temp = new String[charsWFreqSorted.size()];
+		//String[] s = charsWFreqSorted.keySet().toArray();
+		int i = charsWFreqSorted.size()-1;
+		for (String s : charsWFreqSorted.keySet()){
+			temp[i] = s;
+			i--;
 		}
-		return null;
+		for (int j = 0; j < charsWFreqSorted.size(); j++){
+			strings.add(temp[j]);
+		}
+		return strings;
 	}
 
 	/**
@@ -64,12 +103,12 @@ public class DistributionImpl implements Distribution{
 	 *         the learned texts
 	 */
 	public double getFrequency(String key){
-		char[] chars = key.toCharArray();
-		int legitchars = 0;
-			for(int i = 0; i<key.length(); i++){
-				if (source.contains(key.charAt(i))) legitchars++;
+	
+		double legitchars = 0;
+			for(int i = 0; i < text.length(); i++){
+				if (source.contains(text.charAt(i))) legitchars = legitchars+1;
 			}
-		return charFrequency[source.getIndex(chars[0])]/legitchars;
+		return (double) charsWFreq.get(key)/legitchars;
 	}
 
 	/**
