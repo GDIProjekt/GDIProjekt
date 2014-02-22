@@ -29,7 +29,7 @@ public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
 		int[] keys = new int[deep];
 		
 		/**
-		 * Berechnet die einzelnen Schl??ssel.
+		 * Berechnet die einzelnen Schlüssel.
 		 */
 		for (int i = 0; i < deep; i++) {
 			
