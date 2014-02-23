@@ -38,7 +38,7 @@ public class DistributionImpl implements Distribution {
 		
 		ngramMap = new HashMap<Integer, HashMap<String, Double>>(ngramsize);
 		
-		String normalizedText = alphabet.normalize(text); //?
+		String normalizedText = alphabet.normalize(text);
 		
 		Utils utils = new UtilsImpl();
 		

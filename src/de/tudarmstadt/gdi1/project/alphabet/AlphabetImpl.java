@@ -101,9 +101,9 @@ public class AlphabetImpl implements Alphabet{
 	     */
 	    private class AlphabetIterator implements Iterator<Character>{
 	    
-	        int index;
+	        private int index;
 	    
-	        AlphabetImpl alphabet;
+	        private AlphabetImpl alphabet;
 	    
 	        /**
 	         * Konstruktor fuer den Alphabet Iterator

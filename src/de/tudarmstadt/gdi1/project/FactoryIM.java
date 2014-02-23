@@ -23,10 +23,11 @@ import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinBoard;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
-import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.CaersarImpl;
+import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.CaesarImpl;
 import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.KeywordMonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
+import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Caesar;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.KeywordMonoalphabeticCipher;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
@@ -48,19 +49,17 @@ public class FactoryIM implements Factory{
     public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {
         return new DistributionImpl(source, text, ngramsize);
     }
-    
     public Alphabet getAlphabetInstance(Collection<Character> characters) {
         return new AlphabetImpl(characters);
     }
     public Dictionary getDictionaryInstance(Alphabet alphabet, String text) {
         return new DictionaryImpl(alphabet, text);
     }
-
     public MonoalphabeticCipher getMonoalphabeticCipherInstance(Alphabet source, Alphabet dest) {
         return new MonoalphabeticCipherImpl (source, dest);
     }
     public Caesar getCaesarInstance(int key, Alphabet alphabet) {
-        return new CaersarImpl(alphabet, key);
+        return new CaesarImpl(alphabet, key);
     }
     public KeywordMonoalphabeticCipher getKeywordMonoalphabeticCipherInstance(String key, Alphabet alphabet) {
         return new KeywordMonoalphabeticCipherImpl(key, alphabet);
@@ -102,7 +101,7 @@ public class FactoryIM implements Factory{
         return null;
     }
     public Class<? extends SubstitutionCipher> getAbstractSubstitutionCipherClass() {
-        return null;
+        return SubstitutionCipherImpl.class;
     }
     public ValidateDecryptionOracle getValidateDecryptionOracle(Distribution distribution, Dictionary dictionary) {
         return null;

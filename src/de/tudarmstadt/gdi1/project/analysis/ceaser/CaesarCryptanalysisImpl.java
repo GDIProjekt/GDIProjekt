@@ -42,11 +42,9 @@ public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
 			keys[i] = cipherIndex - plainIndex;
 		}
 		
-		//TODO Beispiele ausdenken, in dem Fall wo wirklich die H??ufigkeiten, nicht dem Muster entsprechen und testen.
-		
 		/**
-		 * Berechnet die Standartabweichung der einzelnen Schl??ssel.
-		 * Der Schl??ssel mit der kleinsten Standartabweichung, sollte mit der gr????ten Wahrscheinlichkeit der richtige sein.
+		 * Berechnet die Standartabweichung der einzelnen Schluessel.
+		 * Der Schluessel mit der kleinsten Standartabweichung, sollte mit der groessten Wahrscheinlichkeit der richtige sein.
 		 */
 		Utils utils = new UtilsImpl();
 		double[] averageVariance = new double[deep];

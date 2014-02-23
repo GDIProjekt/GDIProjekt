@@ -12,14 +12,14 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
  * @author .., .., .., Laurin Strelow
  *
  */
-public class CaersarImpl extends MonoalphabeticCipherImpl implements Caesar{
+public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{
 
 	/**
 	 * Konstruktor fuer CeasarImpl.
 	 * @param a Das Ausgangs Alphabet. (Klartext).
 	 * @param key Die Anzahl der Buchstaben, um das das Ausgangsalphabet verschoben wird, zum verschluesseln.
 	 */
-	public CaersarImpl(Alphabet src, int key) {
+	public CaesarImpl(Alphabet src, int key) {
 		super(src, createDestAlphabet(src, key));
 	}
 

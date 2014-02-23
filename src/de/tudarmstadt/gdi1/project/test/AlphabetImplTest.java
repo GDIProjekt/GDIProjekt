@@ -12,6 +12,11 @@ import org.junit.Test;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 
+/**
+ * 
+ * @author .., .., .., Laurin Strelow
+ *
+ */
 public class AlphabetImplTest {
 	
 	Alphabet alph;
@@ -35,20 +40,29 @@ public class AlphabetImplTest {
 
 	
 	@Test
-	public void iteratorTest() {
+	public void testIterator() {
 		
 		int i = 0;
 		
 		for (Character c : alph) {
-			
 			assertTrue(alph.getChar(i) == c);
-			
 			i++;
 		}
 		
 		assertEquals(alph.size(), i);
 	}
 
+	@Test
+	public void testCharacterArray() {
+		
+		char[] array = alph.asCharArray();
+		
+		assertEquals(alph.getChar(0), array[0]);
+		assertEquals(alph.getChar(1), array[1]);
+		assertEquals(alph.getChar(2), array[2]);
+	}
+	
+	
 	@Test(expected = Exception.class)
 	public void testTemplateAlphabetDuplicateEntry() {
 		TemplateTestCore.getFactory().getAlphabetInstance(Arrays.asList('a', 'a'));
