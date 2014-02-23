@@ -76,6 +76,7 @@ public class DistributionImpl implements Distribution {
 
 	@Override
 	public double getFrequency(String key) {
+		
 		return map.get(key);
 	}
 

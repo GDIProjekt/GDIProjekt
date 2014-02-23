@@ -7,6 +7,11 @@ import de.tudarmstadt.gdi1.project.analysis.EncryptionOracle;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaCryptanalysis;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
 
+/**
+ * 
+ * @author Laurin Strelow
+ *
+ */
 public class MonoalphabeticCpaNpaCryptanalysisImpl implements
 		MonoalphabeticCpaNpaCryptanalysis {
 

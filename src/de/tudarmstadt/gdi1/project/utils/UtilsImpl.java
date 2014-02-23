@@ -1,6 +1,8 @@
 package de.tudarmstadt.gdi1.project.utils;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -74,8 +76,24 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
 
 	@Override
 	public Map<Integer, List<String>> ngramize(String text, int... lengths) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		HashMap<Integer, List<String>> result = new HashMap<Integer, List<String>>();
+		
+		for (int i = 0; i < lengths.length; i++) {
+			
+			List<String> list = new LinkedList<String>();
+			
+			for (int j = 0; j < text.length()-lengths[i]+1; j++) {
+				
+				String subString = text.substring(j, j+lengths[i]);
+				
+				list.add(subString);
+			}
+			
+			result.put(lengths[i], list);
+		}
+		
+		return result;
 	}
 
 	@Override
