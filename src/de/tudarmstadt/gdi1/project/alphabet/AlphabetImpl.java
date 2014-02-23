@@ -21,8 +21,8 @@ public class AlphabetImpl implements Alphabet{
 	    *@param chars Eine Collection in der die Buchstaben als Character uebergeben werden.
 	    **/
 	    public AlphabetImpl (Collection <Character> chars) {
-	    	
 	        super();
+	        
 	        list = new ArrayList<Character>();
 	        
 	        for (Character c : chars) {
@@ -78,14 +78,12 @@ public class AlphabetImpl implements Alphabet{
 	 
 	    public char[] asCharArray() {
 	        
-	    	char[] result = new char[size()];
+	    	char[] result = new char[list.size()];
 	    	
 	    	int i = 0;
 	    	
 	    	for (i = 0; i < list.size(); i++) {
 	    		result[i] = getChar(i);
-	    		
-	    		i++;
 	    	}
 	    	
 	    	return result;

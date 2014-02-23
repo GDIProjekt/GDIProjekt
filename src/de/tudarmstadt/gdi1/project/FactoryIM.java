@@ -7,6 +7,7 @@ import java.util.List;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
+import de.tudarmstadt.gdi1.project.alphabet.DictionaryImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 import de.tudarmstadt.gdi1.project.analysis.ValidateDecryptionOracle;
@@ -42,7 +43,7 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
  * @author .., .., .., Laurin Strelow
  *
  */
-public class FactoryImpl implements Factory{
+public class FactoryIM implements Factory{
 
     public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {
         return new DistributionImpl(source, text, ngramsize);
@@ -52,7 +53,7 @@ public class FactoryImpl implements Factory{
         return new AlphabetImpl(characters);
     }
     public Dictionary getDictionaryInstance(Alphabet alphabet, String text) {
-        return null;
+        return new DictionaryImpl(alphabet, text);
     }
 
     public MonoalphabeticCipher getMonoalphabeticCipherInstance(Alphabet source, Alphabet dest) {
