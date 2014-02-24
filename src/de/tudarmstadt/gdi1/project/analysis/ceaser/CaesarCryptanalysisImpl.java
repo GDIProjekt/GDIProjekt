@@ -10,6 +10,11 @@ import de.tudarmstadt.gdi1.project.analysis.caeser.CaesarCryptanalysis;
 import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
+/**
+ * 
+ * @author .., .., .., Laurin Strelow
+ *
+ */
 public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
 
 		

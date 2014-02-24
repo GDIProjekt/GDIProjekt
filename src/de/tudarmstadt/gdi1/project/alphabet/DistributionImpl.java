@@ -137,12 +137,15 @@ public class DistributionImpl implements Distribution {
 	@Override
 	public String getByRank(int length, int rank) {
 
-		rank--; ///der rank fängt bei 1 an
+		rank--; ///der rank fängt bei 1 an, 
 		
 		if (!ngramMap.containsKey(length))
-			throw new IllegalArgumentException("invalid length");
+			return null;
 		
 		List<String> list = getSorted(length);
+		
+		if (rank < list.size())
+			return null;
 		
 		return list.get(rank);
 	}
