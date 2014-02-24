@@ -3,8 +3,21 @@ package de.tudarmstadt.gdi1.project;
 import java.util.Collection;
 import java.util.List;
 
-import aufgabe5.AlphabetImpl;
-import aufgabe61.*;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
+import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
+import de.tudarmstadt.gdi1.project.alphabet.DictionaryImpl;
+
+import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.CaesarImpl;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.KeywordMonoalphabeticCipherImpl;
+
+
+import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipherImpl;
+import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.vigenere.VigenereImpl;
+import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaCryptanalysisImpl;
+import de.tudarmstadt.gdi1.project.analysis.caesar.CaesarCryptanalysisImpl;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
@@ -31,14 +44,14 @@ import de.tudarmstadt.gdi1.project.utils.Utils;
 public class FactoryIM implements Factory{
 	
     public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {
-        return null;
+        return new DistributionImpl(source, text, ngramsize);
     }
     
     public Alphabet getAlphabetInstance(Collection<Character> characters) {
         return new AlphabetImpl(characters);
     }
     public Dictionary getDictionaryInstance(Alphabet alphabet, String text) {
-        return null;
+        return new DictionaryImpl(alphabet, text);
     }
 
     public MonoalphabeticCipher getMonoalphabeticCipherInstance(Alphabet source, Alphabet dest) {
@@ -51,16 +64,16 @@ public class FactoryIM implements Factory{
         return new KeywordMonoalphabeticCipherImpl(key, alphabet);
     }
     public PolyalphabeticCipher getPolyalphabeticCipherInstance(Alphabet source, Alphabet... dest) {
-        return null;
+        return new PolyalphabeticCipherImpl(source,dest);
     }
     public Vigenere getVigenereCipherInstance(String key, Alphabet alphabet) {
-        return null;
+        return new VigenereImpl (key, alphabet);
     }
     public CaesarCryptanalysis getCaesarCryptanalysisInstance() {
-        return null;
+        return new CaesarCryptanalysisImpl();
     }
     public MonoalphabeticCpaNpaCryptanalysis getMonoalphabeticCpaNpaCryptanalysis() {
-        return null;
+        return new MonoalphabeticCpaNpaCryptanalysisImpl();
     }
     public MonoalphabeticCribCryptanalysis getMonoalphabeticCribCryptanalysisInstance() {
         return null;
@@ -72,7 +85,7 @@ public class FactoryIM implements Factory{
         return null;
     }
     public Utils getUtilsInstance() {
-        return null;
+        return new UtilsImpl();
     }
     public Enigma getEnigmaInstance(List<Rotor> rotors, PinBoard pinboard, ReverseRotor reverseRotor) {
         return null;

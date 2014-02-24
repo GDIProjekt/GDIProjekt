@@ -1,11 +1,11 @@
-package aufgabe61;
+package de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic;
 
 import java.util.ArrayList;
 
 
-import aufgabe5.AlphabetImpl;
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.KeywordMonoalphabeticCipher;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.utils.Utils;
 
 public class KeywordMonoalphabeticCipherImpl extends MonoalphabeticCipherImpl implements KeywordMonoalphabeticCipher {

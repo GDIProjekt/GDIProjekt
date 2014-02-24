@@ -1,4 +1,4 @@
-package aufgabe7test;
+package de.tudarmstadt.gdi1.project.alphabet.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,21 +15,37 @@ public class DistributionTest {
 	@Test
 	public void testTemplateDistributionCharacterFrequency() {
 		String s = "abcdefghijklmnopqrstuvwxyz";
-		String t = "ggwellplayedcommendplease";
 
 		Distribution distribution = TemplateTestCore.getFactory().getDistributionInstance(
 				TemplateTestUtils.getDefaultAlphabet(), s, 1);
-		Distribution distribution2 = TemplateTestCore.getFactory().getDistributionInstance(
-				TemplateTestUtils.getDefaultAlphabet(), t, 1);
 
 		for (char c : TemplateTestUtils.getDefaultAlphabet())
 			assertEquals(1 / (double) 26, distribution.getFrequency("" + c), 0.001);
-		
-			assertEquals(5 / (double) 25, distribution2.getFrequency("e"), 0.001);
-			assertEquals(2 / (double) 25, distribution2.getFrequency("g"), 0.001);
-		
 	}
 
+	@Test
+	public void testTemplateDistributionBigramFrequency() {
+		String s = "abcdefghijklmnopqrstuvwxyz";
+
+		Distribution distribution = TemplateTestCore.getFactory().getDistributionInstance(
+				TemplateTestUtils.getDefaultAlphabet(), s, 2);
+
+		assertEquals(1 / (double) 25, distribution.getFrequency("ab"), 0.001);
+		assertEquals(1 / (double) 25, distribution.getFrequency("cd"), 0.001);
+		assertEquals(1 / (double) 25, distribution.getFrequency("ef"), 0.001);
+	}
+
+	@Test
+	public void testTemplateDistributionTrigramFrequency() {
+		String s = "abcdefghijklmnopqrstuvwxyz";
+
+		Distribution distribution = TemplateTestCore.getFactory().getDistributionInstance(
+				TemplateTestUtils.getDefaultAlphabet(), s, 3);
+
+		assertEquals(1 / (double) 24, distribution.getFrequency("abc"), 0.001);
+		assertEquals(1 / (double) 24, distribution.getFrequency("def"), 0.001);
+		assertEquals(1 / (double) 24, distribution.getFrequency("ghi"), 0.001);
+	}
 
 	@Test
 	public void testTemplateDistributionCharacterSorted() {
@@ -46,6 +62,30 @@ public class DistributionTest {
 	}
 
 	@Test
+	public void testTemplateDistributionBigramSorted() {
+		String text = "aaabbccccd";
+
+		Distribution d = TemplateTestCore.getFactory().getDistributionInstance(
+				TemplateTestUtils.getDefaultAlphabet(), text, 2);
+
+		List<String> sortedBigrams = d.getSorted(2);
+		assertEquals("cc", sortedBigrams.get(0));
+		assertEquals("aa", sortedBigrams.get(1));
+	}
+
+	@Test
+	public void testTemplateDistributionTrigramSorted() {
+		String text = "aaabbccccd";
+
+		Distribution d = TemplateTestCore.getFactory().getDistributionInstance(
+				TemplateTestUtils.getDefaultAlphabet(), text, 3);
+
+		List<String> sortedTrigrams = d.getSorted(3);
+		assertEquals("ccc", sortedTrigrams.get(0));
+		assertEquals("aaa", sortedTrigrams.get(1));
+	}
+
+	@Test
 	public void testDistributionIsNormalized() {
 		Alphabet alphabet = TemplateTestUtils.getDefaultAlphabet();
 
@@ -59,5 +99,4 @@ public class DistributionTest {
 		for (int i = 1; i <= dis1.getSorted(2).size(); i++)
 			assertEquals(dis1.getByRank(2, i), dis2.getByRank(2, i));
 	}
-
 }

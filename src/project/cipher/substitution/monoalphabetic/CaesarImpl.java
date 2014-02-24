@@ -1,8 +1,8 @@
-package aufgabe61;
+package de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic;
 
 
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
 import de.tudarmstadt.gdi1.project.utils.Utils;
 
 public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{

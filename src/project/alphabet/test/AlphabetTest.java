@@ -1,4 +1,5 @@
-package aufgabe5.test;
+package de.tudarmstadt.gdi1.project.alphabet.test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -9,10 +10,11 @@ import java.util.Iterator;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 
-public class Aufgabe5Test {
+import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+
+public class AlphabetTest {
 	Alphabet alph;
 	Alphabet randomAlphabet;
 	String validString;
@@ -78,5 +80,4 @@ public class Aufgabe5Test {
 		assertFalse(alphIterator.hasNext());
 		assertEquals(3, alph.size());
 	}
-
 }

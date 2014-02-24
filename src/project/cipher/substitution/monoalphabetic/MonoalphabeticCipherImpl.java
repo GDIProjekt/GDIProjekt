@@ -1,8 +1,9 @@
-package aufgabe61;
+package de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic;
 
-
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
+import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
+
 public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements MonoalphabeticCipher{
 	
 	protected Alphabet src;
@@ -59,6 +60,4 @@ public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements 
 		else
 		return src.getChar(dest.getIndex(chr));
 	}
-	
-   
 }

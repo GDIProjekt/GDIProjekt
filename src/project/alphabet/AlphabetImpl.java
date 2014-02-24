@@ -1,24 +1,22 @@
-package aufgabe5;
-import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import exceptions.doubleChars;
+package de.tudarmstadt.gdi1.project.alphabet;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 
+import exceptions.doubleChars;
 
 public class AlphabetImpl implements Alphabet{
 
 	 private List<Character> list;
-	 doubleChars dc = new doubleChars(); 
+	 doubleChars dc = new doubleChars();
+	 
 	    /**
 	    *Konstruktor für ein Alphabet
 	    *@param chars Geordnete Liste der Alphabets
-	    **/
-	 
-
-
+	    **/	
 	    public AlphabetImpl (Collection <Character> chars) {
 	    	
 	        super();
@@ -82,7 +80,7 @@ public class AlphabetImpl implements Alphabet{
 	    public char[] asCharArray() {
 	    	char[] result = new char[list.size()];
 	    	
-	    	for (int i = 0; i<=list.size(); i++){
+	    	for (int i = 0; i<list.size(); i++){
 	    		result[i] = list.get(i);
 	    	}
 	    	return result;

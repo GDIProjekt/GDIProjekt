@@ -1,4 +1,4 @@
-package aufgabe61;
+package de.tudarmstadt.gdi1.project.cipher.substitution;
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
 
 public abstract class SubstitutionCipherImpl implements SubstitutionCipher{
@@ -61,3 +61,4 @@ public abstract class SubstitutionCipherImpl implements SubstitutionCipher{
 		 */
 		public abstract char reverseTranslate(char chr, int i);
 }
+
