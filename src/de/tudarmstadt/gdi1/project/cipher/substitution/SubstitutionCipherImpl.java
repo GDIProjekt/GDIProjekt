@@ -11,7 +11,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
 public abstract class SubstitutionCipherImpl implements SubstitutionCipher {
 
 	
-	public String encrypt(String text){
+	public final String encrypt(String text){
 		char[] textchar = text.toCharArray();
 		String result = "";
 		int i = 0;
@@ -22,7 +22,7 @@ public abstract class SubstitutionCipherImpl implements SubstitutionCipher {
 		return result;
 	}
 	
-	public String decrypt(String text){
+	public final String decrypt(String text){
 		char[] textchar = text.toCharArray();
 		String result = "";
 		int i = 0;

@@ -40,7 +40,6 @@ public class DictionaryImpl implements Dictionary {
 		words = new ArrayList<String>(sortedWords);
 		
 		scanner.close();
-		
 	}
 	
 	@Override
