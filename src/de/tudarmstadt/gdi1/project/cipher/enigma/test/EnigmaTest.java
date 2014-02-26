@@ -44,4 +44,17 @@ public class EnigmaTest {
 		Enigma e = f.getEnigmaInstance(rotorList, pb, rr);
 		assertEquals("bc", e.encrypt("aa"));
 	}
+	@Test
+	public void fullScaleAlphabetTest(){
+		Alphabet rotor1Alphabet = f.getAlphabetInstance(Arrays.asList(
+				'b', 'c', 'a', 'd'));
+		
+		Rotor r1 = f.getRotorInstance(TemplateTestUtils.getMinimalAlphabet(), rotor1Alphabet, 0);
+		List<Rotor> rotorList = new LinkedList<>();
+		rotorList.add(r1);
+		PinBoard pb = f.getPinBoardInstance(TemplateTestUtils.getMinimalAlphabet(), TemplateTestUtils.getMinimalAlphabet());
+		ReverseRotor rr = f.getReverseRotatorInstance(TemplateTestUtils.getMinimalAlphabet(), TemplateTestUtils.getReversedMinimalAlphabet());
+		Enigma e = f.getEnigmaInstance(rotorList, pb, rr);
+		assertEquals(e.encrypt("abcdacdcbb"), "bddbbacaad");
+	}
 }

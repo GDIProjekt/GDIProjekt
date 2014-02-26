@@ -55,8 +55,8 @@ public class EnigmaImpl implements Enigma{
 	
 	public void RotationAllRotors(int i){
 	
-		if((rotors.get(i).rotate())&&(i<rotors.size()))
-			RotationAllRotors(i++);
+		if((rotors.get(i).rotate())&&(i+1<rotors.size()))
+			RotationAllRotors(i+1);
 	}
 	
 	
