@@ -34,7 +34,8 @@ public class RotorImpl implements Rotor {
 			entryToExit[i] = (entryAlph.getIndex(exitAlph.getChar(i))-i)%entryAlph.size();
 		}
 		
-		initialEntryToExit = entryToExit;
+		initialEntryToExit = entryToExit.clone();
+		
 		//Rotiert so oft wie die übergebene startPosition es verlangt
 		for(int j = 0; j < startPosition%entryAlph.size(); j++){
 			rotate();	
@@ -135,6 +136,7 @@ public class RotorImpl implements Rotor {
 		entryToExit = initialEntryToExit;
 		int eTeListTemp = entryToExit[0];
 		
+		//Verschiebeliste wieder auf Startposition bringen (Verschiebeliste gilt bis dahin nur für Index = 0)  
 		for (int j=0; j < startPosition; j++){
 			
 			for (int i=0; i<entryToExit.length;i++){
