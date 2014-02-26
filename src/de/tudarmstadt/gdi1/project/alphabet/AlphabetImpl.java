@@ -33,21 +33,24 @@ public class AlphabetImpl implements Alphabet{
 	        }
 	    }
 	    
+	    @Override
 	    public int getIndex(char chr) {
 	    	return list.indexOf(chr);
 	    }
 	    
-	    
+	    @Override
 	    public char getChar(int index) {
 	    	
 	    	//throws automatically a index out of bounds exception if index is >= size() or < 0
 	        return  list.get(index);
 	    }
 	    
+	    @Override
 	    public int size() {
 	            return list.size();
 	    }
 	    
+	    @Override
 	    public boolean contains(char chr) {
 	            return list.contains(chr);
 	    }
@@ -62,6 +65,7 @@ public class AlphabetImpl implements Alphabet{
 	            return true;
 	    }
 	    
+	    @Override
 	     public String normalize(String input)  {
 	            char[] chars = input.toCharArray();	            
 	            String result = "";
@@ -76,6 +80,7 @@ public class AlphabetImpl implements Alphabet{
 	            return result;
 	    }
 	 
+	    @Override
 	    public char[] asCharArray() {
 	        
 	    	char[] result = new char[list.size()];
@@ -89,7 +94,25 @@ public class AlphabetImpl implements Alphabet{
 	    	return result;
 	    }
 	    
+	    @Override
+	    public boolean equals(Object obj) {
+	    	
+	    	if (obj instanceof Alphabet) {
+	    		Alphabet alphabet = (Alphabet) obj;
+	    		if (alphabet.size() != size())
+	    			return false;
+	    		
+	    		for (int i = 0; i < size(); i++) {
+	    			if (alphabet.getChar(i) != getChar(i))
+	    				return false;
+	    		}
+	    		return true;
+	    	} else {
+	    		return super.equals(obj);
+	    	}
+	    }
 	    
+	    @Override
 	    public Iterator<Character> iterator()  {
 	    	return new AlphabetIterator(this);
 	    }

@@ -18,8 +18,8 @@ public class DictionaryImpl implements Dictionary {
 	List<String> words;
 	
 	/**
-	 * 
-	 * @param alphabet
+	 * Konstruktor für die Implementierung des Dictionary Interfaces.
+	 * @param alphabet Alphabet auf dem das Dictionary  TODO
 	 * @param text
 	 */
 	public DictionaryImpl(Alphabet alphabet,String text) {

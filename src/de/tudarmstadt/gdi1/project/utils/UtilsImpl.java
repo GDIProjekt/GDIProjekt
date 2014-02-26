@@ -26,8 +26,9 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
         	return a; //throws new IllegalArgumentException("Shift results in same Alphabet");
         
         for (int i = 0; i < a.size(); i++) {
-            int newIndex = Math.abs((a.size() + i - k)%a.size());
-            
+        	///Javas Module rechnet bei Zahlen < 0, nicht wie man es erwarten würden, deswegen das doppelete Modulo.
+        	int newIndex = ((i-k)%a.size() + a.size())%a.size();
+        	
             shiftedChars[newIndex] = a.getChar(i);
         }
         return new AlphabetImpl(Arrays.asList(shiftedChars));
