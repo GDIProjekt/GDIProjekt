@@ -1,3 +1,15 @@
+package src.de.tudarmstadt.gdi1.project.utils;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.HashMap;
+import java.util.LinkedList;
+
+import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
+
 package de.tudarmstadt.gdi1.project.utils;
 
 import java.util.Arrays;
@@ -18,6 +30,7 @@ import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
  */
 public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
 
+    @Override
     public Alphabet shiftAlphabet(Alphabet a, int k) {
         
     	Character[] shiftedChars = new Character[a.size()];
@@ -34,6 +47,7 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
         return new AlphabetImpl(Arrays.asList(shiftedChars));
     }
 	
+    @Override
     public Alphabet reverseAlphabet(Alphabet a) {
         
     	Character[] reversedChars = new Character[a.size()];
@@ -47,6 +61,7 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
         return new AlphabetImpl(Arrays.asList(reversedChars));
     }
     
+    @Override
     public Alphabet randomizeAlphabet(Alphabet a) {
         
         Character[] randomizedChars = new Character[a.size()];
@@ -71,8 +86,30 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
 
 	@Override
 	public String toDisplay(String ciphertext) {
-		// TODO Auto-generated method stub
-		return null;
+		int blocks = 0;
+		String result = "";
+		String blockstring = "";
+		for (int i = 0; i < ciphertext.length(); i++){
+			
+			if (blockstring.length() < 10){
+				blockstring += ciphertext.charAt(i);
+			}
+			else{
+				if (blocks == 5){
+					result = result+ blockstring+ System.lineSeparator() ;
+					
+					blockstring = "" + ciphertext.charAt(i);
+					
+					blocks = 0;
+				}
+				else{
+					result = result + blockstring + " ";
+					blockstring = "" + ciphertext.charAt(i);
+					blocks++;
+				}
+			}
+			
+		}
 	}
 
 	@Override
