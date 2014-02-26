@@ -5,15 +5,19 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-
-
 import de.tudarmstadt.gdi1.project.test.alphabet.TemplateAlphabetTests;
 import de.tudarmstadt.gdi1.project.test.alphabet.TemplateDictionaryTests;
 import de.tudarmstadt.gdi1.project.test.alphabet.TemplateDistributionTests;
+import de.tudarmstadt.gdi1.project.test.alphabet.TestAlphabetImpl;
+import de.tudarmstadt.gdi1.project.test.alphabet.TestDistributionImpl;
 import de.tudarmstadt.gdi1.project.test.analysis.TemplateCaesarCryptanalysisTests;
 import de.tudarmstadt.gdi1.project.test.analysis.TemplateValidationDecryptionOracle;
 import de.tudarmstadt.gdi1.project.test.analysis.TemplateVigenereCryptanalysisTests;
 import de.tudarmstadt.gdi1.project.test.analysis.monoalphabetic.TemplateIndividualTests;
+import de.tudarmstadt.gdi1.project.test.analysis.monoalphabetic.TemplateMonoalphabeticCpaNpaCryptanalysisTests;
+import de.tudarmstadt.gdi1.project.test.cipher.TestCaesarAnalysis;
+import de.tudarmstadt.gdi1.project.test.cipher.TestMonoalphabeticCipherImpl;
+import de.tudarmstadt.gdi1.project.test.cipher.TestSubstitutionsCipherImpl;
 import de.tudarmstadt.gdi1.project.test.cipher.enigma.TemplateEnigmaTest;
 import de.tudarmstadt.gdi1.project.test.cipher.enigma.TemplatePinBoardTest;
 import de.tudarmstadt.gdi1.project.test.cipher.enigma.TemplateReverseRotorTest;
@@ -40,6 +44,7 @@ import de.tudarmstadt.gdi1.project.test.utils.TemplateUtilsTests;
 	TemplatePolyalphabeticCipherTests.class,
 	TemplateSubstitutionCipherTests.class,
 	TemplateVigenereCipherTests.class,
+	TemplateMonoalphabeticCpaNpaCryptanalysisTests.class,
 	
 	/* analysis */
 	TemplateCaesarCryptanalysisTests.class,
@@ -55,8 +60,18 @@ import de.tudarmstadt.gdi1.project.test.utils.TemplateUtilsTests;
 	//TemplateRotorTest.class,
 	
 	/* utils */
-	TemplateUtilsTests.class
+	TemplateUtilsTests.class,
 
+	/*own*/
+	TestAlphabetImpl.class,
+	TestDistributionImpl.class,
+	
+	TestCaesarAnalysis.class,
+	TestMonoalphabeticCipherImpl.class,
+	TestSubstitutionsCipherImpl.class,
+	
+	TestUtilsImpl.class
+	
 	})
 public class Main {
 

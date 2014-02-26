@@ -13,7 +13,7 @@ import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
- * 
+ * Implementierung des Distribution Interfaces.
  * @author .., .., .., Laurin Strelow
  *
  */
@@ -23,15 +23,17 @@ public class DistributionImpl implements Distribution {
 	private Alphabet alphabet;
 	
 	/**
-	 * Eine map die erst unter den ngrammen unterscheidet und dann 
+	 * Eine map die erst unter der Größe der Gramme unterscheidet und auf eine andere Hashmap abbildet,
+	 * die  die verschiedene Gramme als String speichert und zu diesen die Häufigkeit von 0.0 bis 1.0
 	 * */
 	private HashMap<Integer, HashMap<String, Double>> ngramMap;
 	
 	/**
-	 * 
-	 * @param source
-	 * @param text
-	 * @param ngramsize
+	 * Konstruktor für die Distribution Implementierung
+	 * @param source Das Alphabet über dem die Häufigkeitsverteilung erstellt erstellt werden soll.
+	 * @param text Der Text aus dem die Häufigkeits verteilung erstellt werden soll.
+					Buchstaben die nicht im Alphabet sind, werden aus dem text gelöscht.
+	 * @param ngramsize Die Größe bis zu dem die Grame erstellt werden soll, d.h es werden die Gramme von 1 bis ngramsize erstellt.
 	 */
 	public DistributionImpl(Alphabet source, String text, int ngramsize) {
 		alphabet = source;
@@ -62,6 +64,7 @@ public class DistributionImpl implements Distribution {
 				}
 			}
 			
+			//Durchschnitt berechnen
 			double allGrams = grams.size();
 			for (String gram : gramMap.keySet()) {
 				gramMap.put(gram, gramMap.get(gram)/allGrams);
@@ -76,7 +79,7 @@ public class DistributionImpl implements Distribution {
 	@Override
 	public List<String> getSorted(int length) {
 		
-		if (!ngramMap.containsKey(length))
+		if (!ngramMap.containsKey(length)) //FIXME oder leere Liste zurück geben?
 			throw new IllegalArgumentException("invalid length");
 		
 		final HashMap<String, Double> gramMap = ngramMap.get(length);
@@ -116,17 +119,20 @@ public class DistributionImpl implements Distribution {
 		int length = key.length();
 		
 		if (!ngramMap.containsKey(length))
-			throw new IllegalArgumentException("invalid key length");
+			return 0;
 		
 		HashMap<String, Double> gramMap = ngramMap.get(length);
 		
 		if (gramMap.containsKey(key)) {
 			return gramMap.get(key);
-		} else if (alphabet.allows(key)){
+		} else {
+			return 0.0;
+		}
+			/*if (alphabet.allows(key)){ FIXME
 			return 0;
 		} else {
 			throw new IllegalArgumentException("Key is not part of alphabet");
-		}
+		}*/
 	}
 
 	@Override
@@ -144,7 +150,7 @@ public class DistributionImpl implements Distribution {
 		
 		List<String> list = getSorted(length);
 		
-		if (rank < list.size())
+		if (rank > list.size())
 			return null;
 		
 		return list.get(rank);
