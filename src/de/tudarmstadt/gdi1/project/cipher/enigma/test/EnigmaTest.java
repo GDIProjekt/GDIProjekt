@@ -45,16 +45,19 @@ public class EnigmaTest {
 		assertEquals("bc", e.encrypt("aa"));
 	}
 	@Test
-	public void fullScaleAlphabetTest(){
+	public void twoRotorsTest(){
 		Alphabet rotor1Alphabet = f.getAlphabetInstance(Arrays.asList(
 				'b', 'c', 'a', 'd'));
+		Alphabet rotor2Alphabet = f.getAlphabetInstance(Arrays.asList('c', 'b', 'd', 'a'));
 		
 		Rotor r1 = f.getRotorInstance(TemplateTestUtils.getMinimalAlphabet(), rotor1Alphabet, 0);
+		Rotor r2 = f.getRotorInstance(TemplateTestUtils.getMinimalAlphabet(), rotor2Alphabet, 0);
 		List<Rotor> rotorList = new LinkedList<>();
 		rotorList.add(r1);
+		rotorList.add(r2);
 		PinBoard pb = f.getPinBoardInstance(TemplateTestUtils.getMinimalAlphabet(), TemplateTestUtils.getMinimalAlphabet());
 		ReverseRotor rr = f.getReverseRotatorInstance(TemplateTestUtils.getMinimalAlphabet(), TemplateTestUtils.getReversedMinimalAlphabet());
 		Enigma e = f.getEnigmaInstance(rotorList, pb, rr);
-		assertEquals(e.encrypt("abcdacdcbb"), "bddbbacaad");
+		assertEquals(e.encrypt("abcdabcd"), "ccaadabc");
 	}
 }
