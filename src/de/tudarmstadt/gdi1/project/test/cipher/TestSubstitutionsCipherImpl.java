@@ -1,4 +1,4 @@
-package de.tudarmstadt.gdi1.project.test;
+package de.tudarmstadt.gdi1.project.test.cipher;
 
 import static org.mockito.Matchers.anyChar;
 import static org.mockito.Matchers.anyInt;
@@ -17,16 +17,15 @@ import org.mockito.InOrder;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 
 /**
- * 
+ * Testet die abstrakte Implementierung des SubstitutionsCipher Interfaces.
  * @author .., .., .., Laurin Strelow
  *
  */
-public class SubstituinCipherTest {
+public class TestSubstitutionsCipherImpl {
 
 	SubstitutionCipherImpl mockedCipher;
 	
@@ -53,8 +52,6 @@ public class SubstituinCipherTest {
 		
 		verify(mockedCipher, never()).translate(anyChar(), anyInt());
 		verify(mockedCipher, never()).reverseTranslate(anyChar(), anyInt());
-		
-		verifyZeroInteractions(mockedCipher);
 	}
 	
 	@Test
@@ -87,10 +84,34 @@ public class SubstituinCipherTest {
 		inOrder.verify(mockedCipher).reverseTranslate('a', 0);
 		inOrder.verify(mockedCipher).reverseTranslate('b', 1);
 		inOrder.verify(mockedCipher).reverseTranslate('c', 2);
-		
-		verifyNoMoreInteractions(mockedCipher);
 	}
 
+	@Test
+	public void testEncryption() {
+		
+		mockedCipher.encrypt("abbccc");
+		
+		verify(mockedCipher, times(1)).translate(eq('a'), anyInt());
+		verify(mockedCipher, times(2)).translate(eq('b'), anyInt());
+		verify(mockedCipher, times(3)).translate(eq('c'), anyInt());
+		verify(mockedCipher, times(6)).translate(anyChar(), anyInt());
+		
+		verify(mockedCipher, never()).reverseTranslate(anyChar(), anyInt());
+	}
+	
+	@Test
+	public void testDecryption() {
+		
+		mockedCipher.decrypt("aaabbc");
+		
+		verify(mockedCipher, times(3)).reverseTranslate(eq('a'), anyInt());
+		verify(mockedCipher, times(2)).reverseTranslate(eq('b'), anyInt());
+		verify(mockedCipher, times(1)).reverseTranslate(eq('c'), anyInt());
+		verify(mockedCipher, times(6)).reverseTranslate(anyChar(), anyInt());
+		
+		verify(mockedCipher, never()).translate(anyChar(), anyInt());
+	}
+	
 	@Test
 	public void testDecryptionEncryption() {
 		

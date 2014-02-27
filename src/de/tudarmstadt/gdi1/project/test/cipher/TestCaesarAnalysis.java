@@ -1,4 +1,4 @@
-package de.tudarmstadt.gdi1.project.test;
+package de.tudarmstadt.gdi1.project.test.cipher;
 
 import static org.junit.Assert.*;
 
@@ -19,8 +19,9 @@ import de.tudarmstadt.gdi1.project.analysis.caeser.CaesarCryptanalysis;
 import de.tudarmstadt.gdi1.project.analysis.ceaser.CaesarCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.CaesarImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Caesar;
+import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
-public class CaesatAnalysisTest {
+public class TestCaesarAnalysis {
 
 	Alphabet defaultAlphabet;
 	Alphabet smallAlphabet;
