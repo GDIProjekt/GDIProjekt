@@ -1,4 +1,4 @@
-package de.tudarmstadt.gdi1.project.cipher.enigma.test;
+package de.tudarmstadt.gdi1.project.test.cipher.enigma;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,6 +12,11 @@ import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
 import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class ReverseRotorTest {
 	private final Factory f = TemplateTestCore.getFactory();
 

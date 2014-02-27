@@ -9,7 +9,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Monoalphab
 
 /**
  * 
- * @author Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class MonoalphabeticCpaNpaCryptanalysisImpl implements

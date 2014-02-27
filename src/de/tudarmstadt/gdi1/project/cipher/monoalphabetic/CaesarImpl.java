@@ -9,7 +9,7 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
  * Implementierung des Ceasar Interfaces.
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{
@@ -22,7 +22,13 @@ public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{
 	public CaesarImpl(int key, Alphabet src) {
 		super(src, createDestAlphabet(key, src));
 	}
-
+	
+	/**
+	 * Erstellt aus einem Schlüssel und einem Klartext Alphabet das Verschlüsselungs Alphabet.
+	 * @param key Der Schlüssel
+	 * @param src Das Klartext Alphabet
+	 * @return Das Verschlüsselungsalphabet.
+	 */
 	private static Alphabet createDestAlphabet(int key, Alphabet src) {
 		Utils util = new UtilsImpl();
 		

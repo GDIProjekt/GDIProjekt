@@ -15,6 +15,11 @@ import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 
+/**
+ * Test für die UtilsImpl
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class TestUtilsImpl {
 
 	Utils utils;

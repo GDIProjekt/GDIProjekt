@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
-package src.de.tudarmstadt.gdi1.project.utils;
-=======
 package de.tudarmstadt.gdi1.project.utils;
->>>>>>> Laurin4
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,7 +13,7 @@ import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 
 /**
  * Implementierung des Utils Interfaces.
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
@@ -131,8 +126,7 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
 
 	@Override
 	public boolean containsSameCharacters(Alphabet alphabet1, Alphabet alphabet2) {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
     
 }

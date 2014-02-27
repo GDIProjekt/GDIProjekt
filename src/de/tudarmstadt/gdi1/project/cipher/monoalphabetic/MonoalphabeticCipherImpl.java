@@ -6,7 +6,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
 
 /**
  * Implementierung des SubstitutionCipher Interfaces.
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements MonoalphabeticCipher {

@@ -15,9 +15,12 @@ import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
-import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
-import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class TestDistributionImpl {
 	
 	
@@ -34,7 +37,7 @@ public class TestDistributionImpl {
 	
 	@Test
 	public void testGetSorted() {
-		String text = "abcaba"; //TODO besseres Beispiel
+		String text = "abcaba";
 		Distribution simpleDistribution = new DistributionImpl(simpleAlphabet, text, 3);
 		
 		List<String> monogram = simpleDistribution.getSorted(1);

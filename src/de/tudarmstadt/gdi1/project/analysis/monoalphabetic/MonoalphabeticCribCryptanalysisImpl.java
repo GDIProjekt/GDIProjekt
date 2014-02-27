@@ -23,7 +23,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Monoalphab
 
 /**
  * 
- * @author Laurin, Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class MonoalphabeticCribCryptanalysisImpl implements
@@ -73,8 +73,6 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 		return result;
 	}
 	
-	//plain->cipher
-	
 	@Override
 	public Map<Character, Character> reconstructKey( Map<Character, Character> key, String ciphertext,Alphabet alphabet, 
 			Distribution distribution,Dictionary dictionary, List<String> cribs, ValidateDecryptionOracle validateDecryptionOracle) {
@@ -112,7 +110,7 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 				key.remove(nextChar);
 			}
 			
-			return null; //Signalisiert, dass der key komplett ist aber keine richtige Lösung
+			return null; //Signalisiert, dass keine richtige Lösung gefunden worden ist.
 		}
 	}
 
@@ -292,15 +290,15 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 
 	
 	/**
-	 * 
-	 * @param map
-	 * @param alphabet
-	 * @return
+	 * Überprüft, ob der übergebenene vollständig ist, d.h alle Buchstaben aus dem Alphabet belegt sind.
+	 * @param key Der key
+	 * @param alphabet Das Alphabet
+	 * @return true wenn der key vollständig ist, sonst false
 	 */
-	private boolean isKeyComplete(Map<Character, Character> map, Alphabet alphabet) {
+	private boolean isKeyComplete(Map<Character, Character> key, Alphabet alphabet) {
 
 		for (Character c : alphabet) {
-			if (!map.containsKey(c)) {
+			if (!key.containsKey(c)) {
 				return false;
 			}
 		}
@@ -327,9 +325,9 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 	}
 	
 	/**
-	 * 
-	 * @param cribs
-	 * @return
+	 * Erstellt aus einer Liste von cribs ein Set, in dem jeder Buchstaben der cribs vertreten ist.
+	 * @param cribs Die List von cribs.
+	 * @return Eine Set von Buchstaben.
 	 */
 	private Set<Character> createCharacterSetFromCribsList(Collection<String> cribs) {
 		

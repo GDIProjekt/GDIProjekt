@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma.test;
+package de.tudarmstadt.gdi1.project.test.cipher.enigma;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,6 +17,11 @@ import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
 import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class EnigmaTest {
 	private Factory f = TemplateTestCore.getFactory();
 

@@ -7,26 +7,26 @@ import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
- * 
- * @author Laurin Strelow
+ * Implementierung des Vignere Interfaces
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class VigenereImpl extends PolyalphabeticCipherImpl implements Vigenere {
 
 	/**
-	 * 
-	 * @param key
-	 * @param src
+	 * Konstruktor für die Implementierung des Vignere Interfaces
+	 * @param key Der Schlüssel mit dem verschlüsselt werden soll.
+	 * @param src Das Klartext Alphabet
 	 */
 	public VigenereImpl(String key, Alphabet src) {
 		super(src, createDestAlphabets(key, src));
 	}
 	
 	/**
-	 * 
-	 * @param key
-	 * @param src
-	 * @return
+	 * Erstellt ein Array von Alphabeten, für die Verschlüsselung, ausgehend von einen Schlüssel und einem Klartext Alphabet.
+	 * @param key Der Schlüssel
+	 * @param src Das Klartext Alphabet.
+	 * @return Die Array von Alphabeten.
 	 */
 	private static Alphabet[] createDestAlphabets(String key, Alphabet src) {
 		

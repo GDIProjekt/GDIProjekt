@@ -7,7 +7,7 @@ import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 
 /**
  * Implementierung des Individual Interfaces.
- * @author .., .., .., Erik Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class IndividualImpl implements Individual {

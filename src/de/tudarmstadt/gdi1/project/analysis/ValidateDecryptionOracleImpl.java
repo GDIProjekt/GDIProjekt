@@ -5,11 +5,21 @@ import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class ValidateDecryptionOracleImpl implements ValidateDecryptionOracle {
 
 	private Distribution distribution;
 	private Dictionary dictionary;
 	
+	/**
+	 * Der Konstruktor für das ValidateDecryptionOracle.
+	 * @param distribution Die Häufigkeitsverteilung mit dem die Beurteilung der Entschlüsselung erfolgen soll.
+	 * @param dictionary Das Wörterbuch mit dem die Beurteilung der Entschlüsselung erfolgen soll.
+	 */
 	public ValidateDecryptionOracleImpl(Distribution distribution, Dictionary dictionary) {
 		super();
 		this.distribution = distribution;

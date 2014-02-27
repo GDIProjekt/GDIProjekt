@@ -9,7 +9,7 @@ import java.util.Iterator;
 /**
  * Eine Implementierung fuer das Alphabet Interface.
  * 
- * @author ....,..,..., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class AlphabetImpl implements Alphabet{
@@ -18,7 +18,7 @@ public class AlphabetImpl implements Alphabet{
 	 
 	    /**
 	    * Konstruktor fuer ein Alphabet
-	    *@param chars Eine Collection in der die Buchstaben als Character uebergeben werden.
+	    * @param chars Eine Collection von Character, kein Character darf doppelt vorkommen.
 	    **/
 	    public AlphabetImpl (Collection <Character> chars) {
 	        super();
@@ -40,7 +40,6 @@ public class AlphabetImpl implements Alphabet{
 	    
 	    @Override
 	    public char getChar(int index) {
-	    	
 	    	//throws automatically a index out of bounds exception if index is >= size() or < 0
 	        return  list.get(index);
 	    }
@@ -119,7 +118,7 @@ public class AlphabetImpl implements Alphabet{
 	    
 	    /**
 	     * Klasse fuer die Implementierug des Iterator Infterfaces, wird gebraucht fuer das Iterable Interface vom Alphabet.
-	     * @author ..., .., .., Laurin Strelow
+	     * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
 	     *
 	     */
 	    private class AlphabetIterator implements Iterator<Character>{
