@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma.test;
+package de.tudarmstadt.gdi1.project.cipher.enigma.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -39,7 +39,7 @@ public class PinboardTest {
 		Alphabet a = f.getAlphabetInstance(Arrays.asList('a','b', 'c', 'd'));	
 		Alphabet b = f.getAlphabetInstance(Arrays.asList('b','c', 'a', 'd'));
 		
-		// da das erste source-Zeichen das dritte dest-Zeichen ist abgebildet wird müsste das erste dest-Zeichen
+		// da das erste source-Zeichen das dritte dest-Zeichen ist abgebildet wird m��sste das erste dest-Zeichen
 		// auf das dritte source-Zeichen abbilden, was es nicht tut, weshalb ein Fehler beim Instanzeren der PinBoard zu erwarten ist
 		PinBoard pb1 = f.getPinBoardInstance(a, b);
 		

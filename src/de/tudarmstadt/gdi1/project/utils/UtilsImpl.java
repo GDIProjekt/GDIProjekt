@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 package src.de.tudarmstadt.gdi1.project.utils;
+=======
+package de.tudarmstadt.gdi1.project.utils;
+>>>>>>> Laurin4
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -99,6 +103,7 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
 			}
 			
 		}
+        
 		return result + blockstring;
 	}
 

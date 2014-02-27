@@ -48,16 +48,16 @@ import de.tudarmstadt.gdi1.project.test.utils.TemplateUtilsTests;
 	
 	/* analysis */
 	TemplateCaesarCryptanalysisTests.class,
-	//TemplateValidationDecryptionOracle.class,
+	TemplateValidationDecryptionOracle.class,
 	//TemplateVigenereCryptanalysisTests.class,
-	//TemplateIndividualTests.class,
+	TemplateIndividualTests.class,
 
 	
 	/* enigma */
 	//TemplateEnigmaTest.class,
-	//TemplatePinBoardTest.class,
-	//TemplateReverseRotorTest.class,
-	//TemplateRotorTest.class,
+	TemplatePinBoardTest.class,
+	TemplateReverseRotorTest.class,
+	TemplateRotorTest.class,
 	
 	/* utils */
 	TemplateUtilsTests.class,

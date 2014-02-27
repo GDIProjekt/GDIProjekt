@@ -1,4 +1,5 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma;
+package de.tudarmstadt.gdi1.project.cipher.enigma;
+
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
 

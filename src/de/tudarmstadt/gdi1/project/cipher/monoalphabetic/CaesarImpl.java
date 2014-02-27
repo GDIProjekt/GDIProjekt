@@ -19,11 +19,11 @@ public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{
 	 * @param a Das Ausgangs Alphabet. (Klartext).
 	 * @param key Die Anzahl der Buchstaben, um das das Ausgangsalphabet verschoben wird, zum verschluesseln.
 	 */
-	public CaesarImpl(Alphabet src, int key) {
-		super(src, createDestAlphabet(src, key));
+	public CaesarImpl(int key, Alphabet src) {
+		super(src, createDestAlphabet(key, src));
 	}
 
-	private static Alphabet createDestAlphabet(Alphabet src, int key) {
+	private static Alphabet createDestAlphabet(int key, Alphabet src) {
 		Utils util = new UtilsImpl();
 		
 		return util.shiftAlphabet(src, key);

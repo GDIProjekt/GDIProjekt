@@ -145,6 +145,15 @@ public class TestAlphabetImpl {
 		}
 		
 		assertEquals(alph.size(), i);
+		
+		Alphabet alph2 = new AlphabetImpl(new ArrayList<Character>());
+		
+		i = 0;
+		for (Character c: alph2) {
+			i++;
+		}
+		assertEquals(0, i);
+		
 	}
 	
 	@Test

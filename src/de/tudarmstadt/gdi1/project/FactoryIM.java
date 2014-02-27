@@ -1,49 +1,47 @@
-package src.de.tudarmstadt.gdi1.project;
+package de.tudarmstadt.gdi1.project;
 
 import java.util.Collection;
 import java.util.List;
 
-import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
-import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
-import de.tudarmstadt.gdi1.project.alphabet.DictionaryImpl;
-
-import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.CaesarImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.KeywordMonoalphabeticCipherImpl;
-
-import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipherImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.vigenere.VigenereImpl;
-
-import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaCryptanalysisImpl;
-import de.tudarmstadt.gdi1.project.analysis.caesar.CaesarCryptanalysisImpl;
-
-import de.tudarmstadt.gdi1.project.cipher.enigma.RotorImpl;
-import de.tudarmstadt.gdi1.project.cipher.enigma.PinboardImpl;
-import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotorImpl;
-
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
+import de.tudarmstadt.gdi1.project.alphabet.DictionaryImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
+import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 import de.tudarmstadt.gdi1.project.analysis.ValidateDecryptionOracle;
+import de.tudarmstadt.gdi1.project.analysis.ValidateDecryptionOracleImpl;
 import de.tudarmstadt.gdi1.project.analysis.caeser.CaesarCryptanalysis;
+import de.tudarmstadt.gdi1.project.analysis.ceaser.CaesarCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.Individual;
+import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.IndividualImpl;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaCryptanalysis;
+import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCribCryptanalysis;
+import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCribCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticKnownCiphertextCryptanalysis;
 import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysis;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinBoard;
+import de.tudarmstadt.gdi1.project.cipher.enigma.PinboardImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
+import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotorImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
+import de.tudarmstadt.gdi1.project.cipher.enigma.RotorImpl;
+import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.CaesarImpl;
+import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.KeywordMonoalphabeticCipherImpl;
+import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
+import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Caesar;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.KeywordMonoalphabeticCipher;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipher;
+import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.Vigenere;
+import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.vigenere.VigenereImpl;
 import de.tudarmstadt.gdi1.project.utils.Utils;
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 public class FactoryIM implements Factory{
 	
@@ -80,7 +78,7 @@ public class FactoryIM implements Factory{
         return new MonoalphabeticCpaNpaCryptanalysisImpl();
     }
     public MonoalphabeticCribCryptanalysis getMonoalphabeticCribCryptanalysisInstance() {
-        return null;
+        return new MonoalphabeticCribCryptanalysisImpl();
     }
     public MonoalphabeticKnownCiphertextCryptanalysis getMonoalphabeticKnownCiphertextCryptanalysisInstance() {
         return null;
@@ -107,11 +105,11 @@ public class FactoryIM implements Factory{
         return  SubstitutionCipherImpl.class;
     }
     public ValidateDecryptionOracle getValidateDecryptionOracle(Distribution distribution, Dictionary dictionary) {
-        return null;
+        return new ValidateDecryptionOracleImpl(distribution, dictionary);
     }
     
     public Individual getIndividualInstance(Alphabet alphabet, double fitness) {
-        return null;
+        return new IndividualImpl(alphabet, fitness);
     }
 
 }
