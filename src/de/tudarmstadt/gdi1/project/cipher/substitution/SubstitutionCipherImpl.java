@@ -10,7 +10,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipher;
  */
 public abstract class SubstitutionCipherImpl implements SubstitutionCipher {
 
-	
+	@Override
 	public final String encrypt(String text){
 		char[] textchar = text.toCharArray();
 		String result = "";
@@ -22,6 +22,7 @@ public abstract class SubstitutionCipherImpl implements SubstitutionCipher {
 		return result;
 	}
 	
+	@Override
 	public final String decrypt(String text){
 		char[] textchar = text.toCharArray();
 		String result = "";
@@ -33,7 +34,9 @@ public abstract class SubstitutionCipherImpl implements SubstitutionCipher {
 		return result;
 	}
 	
+	@Override
 	public abstract char translate(char chr, int i);
 		
+	@Override
 	public abstract char reverseTranslate(char chr, int i);
 }

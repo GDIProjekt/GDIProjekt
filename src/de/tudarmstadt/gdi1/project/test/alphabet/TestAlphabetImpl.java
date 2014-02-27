@@ -15,7 +15,7 @@ import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 
 /**
  * Testet die Alphabet Implementierung.
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class TestAlphabetImpl {

@@ -22,7 +22,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 
 /**
  * Testet die abstrakte Implementierung des SubstitutionsCipher Interfaces.
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class TestSubstitutionsCipherImpl {

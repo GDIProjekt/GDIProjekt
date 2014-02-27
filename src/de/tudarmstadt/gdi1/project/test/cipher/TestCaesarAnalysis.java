@@ -21,6 +21,11 @@ import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.CaesarImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Caesar;
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class TestCaesarAnalysis {
 
 	Alphabet defaultAlphabet;

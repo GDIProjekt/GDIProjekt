@@ -12,7 +12,7 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
  * 
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
@@ -90,7 +90,7 @@ public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
 	@Override
 	public Integer knownCiphertextAttack(String ciphertext,
 			Distribution distribution, Dictionary dict) {
-		return knownCiphertextAttack(ciphertext, distribution); ///?
+		return knownCiphertextAttack(ciphertext, distribution);
 	}
 
     @Override

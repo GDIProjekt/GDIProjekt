@@ -3,11 +3,22 @@ package de.tudarmstadt.gdi1.project.cipher.enigma;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinBoard;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class PinboardImpl implements PinBoard{
 	Alphabet source;
 	Alphabet dest;
+	
+	/**
+	 * 
+	 * @param source
+	 * @param dest
+	 */
 	public PinboardImpl(Alphabet source, Alphabet dest){
-		//pr��fen ob Alphabet bzw. die Buchstaben symmetrisch zueinander sind, wenn nicht wird eine Exception geworfen
+		//prüfen ob Alphabet bzw. die Buchstaben symmetrisch zueinander sind, wenn nicht wird eine Exception geworfen
 		for (Character c: source.asCharArray()){
 			if (source.getChar(dest.getIndex(c)) != dest.getChar(source.getIndex(c)))
 				throw new IllegalArgumentException("Error: Given alphabets are not compatible.");
@@ -15,14 +26,8 @@ public class PinboardImpl implements PinBoard{
 		this.source = source;
 		this.dest = dest;
 	}
-	
-	/**
-	 * passes the given character through the pinboard.
-	 * 
-	 * @param c
-	 *            the character that should be passed through the pinboard.
-	 * @return The translated Character at the end of the pinboard
-	 */
+
+	@Override
 	public char translate(char c){
 		return source.getChar(dest.getIndex(c));
 	}

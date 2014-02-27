@@ -6,22 +6,27 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipher;
 
 /**
- * 
- * @author .., .., .., Laurin Strelow
+ * Implementierung des PolyalphabeticCipher Interfaces.
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
-public class PolyalphabeticCipherImpl extends SubstitutionCipherImpl implements
-		PolyalphabeticCipher {
+public class PolyalphabeticCipherImpl extends SubstitutionCipherImpl implements PolyalphabeticCipher {
 
 	private Alphabet sourceAlphabet;
 	private Alphabet[] destAlphabets;
 	
 	/**
-	 * 
-	 * @param src
-	 * @param dest
+	 * Konstruktor für PolyalphabeticCipherImpl
+	 * @param src Das Quellalphabet
+	 * @param dest Eine Array von Zielalphabeten.
 	 */
 	public PolyalphabeticCipherImpl(Alphabet src, Alphabet[] dest) {
+		
+		for (int i = 0; i < dest.length; i++) {
+			if (src.size() != dest[i].size())
+				throw new IllegalArgumentException("All Alphabets needs the same size!");
+		}
+		
 		sourceAlphabet = src;
 		destAlphabets = dest;
 	}

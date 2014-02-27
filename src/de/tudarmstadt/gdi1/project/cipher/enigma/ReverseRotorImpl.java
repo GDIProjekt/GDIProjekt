@@ -3,11 +3,20 @@ package de.tudarmstadt.gdi1.project.cipher.enigma;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
 
-
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class ReverseRotorImpl implements ReverseRotor{
 	Alphabet entryAlph;
 	Alphabet exitAlph;
 	
+	/**
+	 * 
+	 * @param entryAlph
+	 * @param exitAlph
+	 */
 	public ReverseRotorImpl (Alphabet entryAlph, Alphabet exitAlph){
 		for (Character c: entryAlph.asCharArray()){
 			if (entryAlph.getIndex(c)==exitAlph.getIndex(c)){
@@ -17,13 +26,8 @@ public class ReverseRotorImpl implements ReverseRotor{
 		this.entryAlph = entryAlph;
 		this.exitAlph = exitAlph;
 	}
-	/**
-	 * passes the given character through the ReverseRotor of an enigma.
-	 * 
-	 * @param c
-	 *            the character that should be encrypted
-	 * @return the encrypted character
-	 */
+	
+	@Override
 	public char translate(char c){
 		 return entryAlph.getChar(exitAlph.getIndex(c));
 	}

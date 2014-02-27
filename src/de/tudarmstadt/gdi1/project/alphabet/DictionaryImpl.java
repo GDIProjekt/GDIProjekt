@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 /**
  * 
- * @author Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class DictionaryImpl implements Dictionary {
@@ -19,8 +19,8 @@ public class DictionaryImpl implements Dictionary {
 	
 	/**
 	 * Konstruktor für die Implementierung des Dictionary Interfaces.
-	 * @param alphabet Alphabet auf dem das Dictionary  TODO
-	 * @param text
+	 * @param alphabet Alphabet über dem das Dictionary erstellt werden soll.
+	 * @param text Der Text aus dem das Dictionary erstellt werden soll; Wörter werden mit Leerzeichen, ',', '!', '?' getrennt.
 	 */
 	public DictionaryImpl(Alphabet alphabet,String text) {
 		this.alphabet = alphabet;

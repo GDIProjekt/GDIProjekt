@@ -1,4 +1,4 @@
-package de.tudarmstadt.gdi1.project.cipher.enigma.test;
+package de.tudarmstadt.gdi1.project.test.cipher.enigma;
 
 import java.util.Arrays;
 
@@ -11,6 +11,11 @@ import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
 import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
+/**
+ *
+ * Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class RotorTest {
 
 	private Rotor r;

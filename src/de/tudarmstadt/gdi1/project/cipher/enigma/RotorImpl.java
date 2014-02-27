@@ -6,6 +6,11 @@ import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class RotorImpl implements Rotor {
 	Alphabet entryAlph;
 	Alphabet exitAlph;
@@ -15,6 +20,7 @@ public class RotorImpl implements Rotor {
 	int[] initialEntryToExit;
 	int startPosition;
 	int Position;
+	
 	/**
 	 * Constructor of class RotorImpl
 	 * @param entryAlph
@@ -48,17 +54,7 @@ public class RotorImpl implements Rotor {
 		
 	}
 	
-	/**
-	 * passes a given character through the rotor of an enigma.
-	 * 
-	 * @param c
-	 *            the character that should be passed through the rotor
-	 * @param forward
-	 *            true if we pass the character forward through the rotor.
-	 *            Should be true before the ReverseRotor has been passed and
-	 *            false afterwards.
-	 * @return the translated character.
-	 */
+	@Override
 	public char translate(char c, boolean forward){
 		char result;
 		if (forward){
@@ -80,12 +76,7 @@ public class RotorImpl implements Rotor {
 		return result;
 	}
 
-	/**
-	 * rotates the rotor to its next position.
-	 * 
-	 * @return true if the rotor reached its initial position (i.e., the next
-	 *         rotor has to be rotated), otherwise false
-	 */
+	@Override
 	public boolean rotate(){
 		boolean result;
 		
@@ -129,9 +120,7 @@ public class RotorImpl implements Rotor {
 		return result;
 	}
 
-	/**
-	 * resets the rotor to its default position
-	 */
+	@Override
 	public void reset(){
 		entryToExit = initialEntryToExit;
 		int eTeListTemp = entryToExit[0];

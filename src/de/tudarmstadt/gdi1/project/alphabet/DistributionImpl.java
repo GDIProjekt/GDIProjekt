@@ -14,7 +14,7 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
  * Implementierung des Distribution Interfaces.
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class DistributionImpl implements Distribution {
@@ -24,7 +24,7 @@ public class DistributionImpl implements Distribution {
 	
 	/**
 	 * Eine map die erst unter der Größe der Gramme unterscheidet und auf eine andere Hashmap abbildet,
-	 * die  die verschiedene Gramme als String speichert und zu diesen die Häufigkeit von 0.0 bis 1.0
+	 * die die verschiedene Gramme als String speichert und zu diesen die Häufigkeit von 0.0 bis 1.0
 	 * */
 	private HashMap<Integer, HashMap<String, Double>> ngramMap;
 	

@@ -43,6 +43,11 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.vigenere.V
 import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
+/**
+ * 
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ *
+ */
 public class FactoryIM implements Factory{
 	
     public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {

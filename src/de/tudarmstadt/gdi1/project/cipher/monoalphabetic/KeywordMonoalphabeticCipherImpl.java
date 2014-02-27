@@ -11,21 +11,26 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
  * 
- * @author .., .., .., Laurin Strelow
+ * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  * 
  */
 public class KeywordMonoalphabeticCipherImpl extends MonoalphabeticCipherImpl implements KeywordMonoalphabeticCipher {
 
 	/**
-	 * @param keyWord 
-	 * TODO muss das Keyword kleiner gleich als a sein?..
-	 * @param a 
+	 * Konstruktor für die KeywordMonoalphabeticCipher Implmentierung
+	 * @param keyWord Das keyWord mit dem verschlüsselt werden soll.
+	 * @param a Das Klartext alphabet, aus diesem wird mit dem Schlüsselwort die Verschlüsselung erstellt.
 	 */
 	public KeywordMonoalphabeticCipherImpl(String keyWord, Alphabet a) {
 		super(a, createDestAlphabet(keyWord, a));	
 	}
 	
-	
+	/**
+	 * Erstellt aus einem Schlüsselword und einem Klartext Alphabet das Verschlüsselungs Alphabet.
+	 * @param keyWord Das Schlüsselwort
+	 * @param a Das Klartext Alphabet
+	 * @return Das Verschlüsselungs Alphabet.
+	 */
 	private static Alphabet createDestAlphabet(String keyWord, Alphabet a) {
 		char[] array = keyWord.toCharArray();
 		
@@ -44,8 +49,6 @@ public class KeywordMonoalphabeticCipherImpl extends MonoalphabeticCipherImpl im
 			if (!list.contains(c))
 				list.add(c);
 		}
-		
-		//TODO generierung des der liste schon abrechen wenn genung buchstaben vorhanden sind.
 		
 		return new AlphabetImpl(list.subList(0, a.size()));
 	}
