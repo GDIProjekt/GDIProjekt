@@ -1,21 +1,16 @@
-package de.tudarmstadt.gdi1.project.cipher.monoalphabetic;
+package de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic;
 
-import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
+import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
 
-/**
- * Implementierung des SubstitutionCipher Interfaces
- * @author .., .., .., Laurin Strelow
- *
- */
-public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements MonoalphabeticCipher {
-	
+public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements MonoalphabeticCipher{
 	private Alphabet src;
 	private Alphabet dest;	
 	
 	/**
-	 * Konstruktor fuer MonoalphabeticCipherImpl.
+	 * Konstruktor fÃ¼r MonoalphabeticCipherImpl.
 	 * @param src Das Ausgangs Alphabet von dem Verschluesselt werden soll. (Klartext)
 	 * @param dest Das Alphabet zu dem hin verschluesselt werden soll. (Chiffretext)
 	 */
@@ -45,5 +40,5 @@ public class MonoalphabeticCipherImpl extends SubstitutionCipherImpl implements 
     	return src.getChar(dest.getIndex(chr));
 	}
 
-	
+
 }

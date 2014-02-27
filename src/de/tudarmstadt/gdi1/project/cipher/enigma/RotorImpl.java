@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma;
+package de.tudarmstadt.gdi1.project.cipher.enigma;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
@@ -14,6 +14,8 @@ public class RotorImpl implements Rotor {
 	int[] initialEntryToExit;
 	int startPosition;
 	int Position;
+	
+	
 	/**
 	 * Constructor of class RotorImpl
 	 * @param entryAlph
@@ -21,6 +23,9 @@ public class RotorImpl implements Rotor {
 	 * @param startPosition
 	 */
 	public RotorImpl (Alphabet entryAlph, Alphabet exitAlph, int startPosition){
+		
+		if (entryAlph.size()!=exitAlph.size()) 
+			throw new IllegalArgumentException("Error: entry and exit alphabet have to be of same size.");
 		
 		this.entryAlph = entryAlph;
 		this.exitAlph = exitAlph;
@@ -33,17 +38,17 @@ public class RotorImpl implements Rotor {
 		for (i = 0; i<entryAlph.size(); i++){
 			entryToExit[i] = (entryAlph.getIndex(exitAlph.getChar(i))-i)%entryAlph.size();
 		}
+		//Ursprüngliche Verschiebungswerte (also für entryAlph -> exitAlph für 0 Rotationen
+		initialEntryToExit = entryToExit.clone();
 		
-		initialEntryToExit = entryToExit;
 		//Rotiert so oft wie die übergebene startPosition es verlangt
 		for(int j = 0; j < startPosition%entryAlph.size(); j++){
 			rotate();	
 		}
 		initialExitAlph = this.exitAlph;		
 		
-		
-		this.startPosition = startPosition;
-		Position = startPosition;
+		this.startPosition = startPosition%entryAlph.size();
+		Position = this.startPosition;
 		
 	}
 	
@@ -61,6 +66,7 @@ public class RotorImpl implements Rotor {
 	public char translate(char c, boolean forward){
 		char result;
 		if (forward){
+			//Prüfen ob zu übersetzender Buchstabe im entryAlph vorhanden ist 
 			if (!entryAlph.contains(c)){
 				throw new IllegalArgumentException("Error: Entry alphabet doesn't contain character which is to translate.");
 			}
@@ -69,6 +75,7 @@ public class RotorImpl implements Rotor {
 			}
 		}
 		else{
+			//Prüfen ob zu übersetzender Buchstabe im exitAlph vorhanden ist
 			if (!exitAlph.contains(c)){
 				throw new IllegalArgumentException("Error: Exit alphabet doesn't contain character which is to translate.");
 			}
@@ -87,17 +94,18 @@ public class RotorImpl implements Rotor {
 	 */
 	public boolean rotate(){
 		boolean result;
+		Position++;
 		
-		int eTeListTemp = entryToExit[0];
-		
+		int eTeListTemp = entryToExit[0];		
 		
 		//Verschieben der Alphabetsverschiebungswerte
 		for (int i=0; i<entryToExit.length;i++){
 			if (i==entryToExit.length-1){
-				
+				//alle Werte um 1 nach vorne verschieben
 				entryToExit[i] = eTeListTemp;			
 			}
 			else{
+				//ersten Wert an letzte Stelle setzen
 				entryToExit[i]=entryToExit[i+1];
 			}
 		}
@@ -109,25 +117,31 @@ public class RotorImpl implements Rotor {
 		int j = 0;
 		//Verschieben des Zielalphabets
 		for (Character c : alphChars){
+			//Index des übersetzten Buchstabens ergibt sich aus dem Index des Buchstabens im entryAlph + dem Verschiebungswert
+			// + der Größe des entryAlph (falls Index negativ sein würde) modulo der Größe des etryAlph
 			chars[j] = entryAlph.getChar((entryAlph.getIndex(c)+entryToExit[j]+entryAlph.size())%entryAlph.size());
 			j++;
 		}
 		for (Character c: chars){
 			temp.add(c);
 		}
+		
 		exitAlph = new AlphabetImpl(temp);
 		
-		if (Position == startPosition){
+		//Wenn die momentane Position modulo Alphabetsgröße = startPosition ist (d.h. eine volle Umdrehung stattfand) wird die
+		//Position auf die Startposition zurückgesetzt und true zurückgegeben
+		if (Position%entryAlph.size() == startPosition){
 			Position = startPosition;
 			result = true;
 		}
+		//ansonsten wird die Position um 1 hochgezählt und false ausgegeben
 		else{
-			Position = (Position+1)%entryAlph.size();
 			result = false;
 		}
 		return result;
 	}
 
+	
 	/**
 	 * resets the rotor to its default position
 	 */
@@ -135,6 +149,7 @@ public class RotorImpl implements Rotor {
 		entryToExit = initialEntryToExit;
 		int eTeListTemp = entryToExit[0];
 		
+		//Verschiebeliste wieder auf Startposition bringen (Verschiebeliste gilt bis dahin nur für Index = 0)  
 		for (int j=0; j < startPosition; j++){
 			
 			for (int i=0; i<entryToExit.length;i++){

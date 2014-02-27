@@ -1,28 +1,25 @@
-package src.de.tudarmstadt.gdi1.project;
+package de.tudarmstadt.gdi1.project;
 
 import java.util.Collection;
 import java.util.List;
 
+import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysisImpl;
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 import de.tudarmstadt.gdi1.project.alphabet.DictionaryImpl;
-
-import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.SubstitutionCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.CaesarImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.KeywordMonoalphabeticCipherImpl;
-
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.vigenere.VigenereImpl;
-
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.caesar.CaesarCryptanalysisImpl;
-
 import de.tudarmstadt.gdi1.project.cipher.enigma.RotorImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinboardImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotorImpl;
-
+import de.tudarmstadt.gdi1.project.cipher.enigma.EnigmaImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
@@ -86,13 +83,13 @@ public class FactoryIM implements Factory{
         return null;
     }
     public VigenereCryptanalysis getVigenereCryptanalysisInstance() {
-        return null;
+        return new VigenereCryptanalysisImpl();
     }
     public Utils getUtilsInstance() {
         return new UtilsImpl();
     }
     public Enigma getEnigmaInstance(List<Rotor> rotors, PinBoard pinboard, ReverseRotor reverseRotor) {
-        return null;
+        return new EnigmaImpl(rotors, pinboard, reverseRotor);
     }
     public PinBoard getPinBoardInstance(Alphabet source, Alphabet destination) {
         return new PinboardImpl(source, destination);

@@ -1,25 +1,29 @@
 package de.tudarmstadt.gdi1.project.alphabet;
 
+import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+
 import java.util.ArrayList;
+
+import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
+
+import java.util.Scanner;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
+
+
+
 import java.util.TreeSet;
 
-/**
- * 
- * @author Laurin Strelow
- *
- */
+
 public class DictionaryImpl implements Dictionary {
 
-	Alphabet alphabet;
+Alphabet alphabet;
 	
 	List<String> words;
 	
 	/**
-	 * 
-	 * @param alphabet
+	 * Konstruktor fÃ¼r die Implementierung des Dictionary Interfaces.
+	 * @param alphabet Alphabet auf dem das Dictionary  TODO
 	 * @param text
 	 */
 	public DictionaryImpl(Alphabet alphabet,String text) {
@@ -66,5 +70,6 @@ public class DictionaryImpl implements Dictionary {
 	public String get(int index) {
 		return words.get(index);
 	}
+
 
 }

@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma;
+package de.tudarmstadt.gdi1.project.cipher.enigma;
 import java.util.List;
 
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
@@ -20,7 +20,7 @@ public class EnigmaImpl implements Enigma{
 		char[] transChars = new char[chars.length];
 		String result = "";
 		int i = 0;
-		//Einzelnen Buchstaben durch Pinboard und durch alle Rotoren
+		//Einzelnen Buchstaben durch Pinboard
 		for(Character c: chars){
 			transChars[i] = pinboard.translate(c);
 			
@@ -53,6 +53,11 @@ public class EnigmaImpl implements Enigma{
 		return result;
 	}
 	
+	/**
+	 * Hilfsprozedur RotationAllRotors: Rotiert stets den Rotor an der Stelle i, prüft ob rotate() true ausgibt (also eine komplette Umdrehung erfolgt ist) und ob es einen
+	 * 									weiteren Rotor gibt, wenn ja wird RotationAllRotors rekursiv für den nächsten Rotor aufgerufen 
+	 * @param i
+	 */
 	public void RotationAllRotors(int i){
 	
 		if((rotors.get(i).rotate())&&(i+1<rotors.size()))
@@ -65,7 +70,7 @@ public class EnigmaImpl implements Enigma{
 		char[] transChars = new char[chars.length];
 		String result = "";
 		int i = 0;
-		//Einzelne Buchstaben durch Pinboard und durch alle Rotoren
+		//Einzelnen Buchstaben durch Pinboard
 		for(Character c: chars){
 			transChars[i] = pinboard.translate(c);
 			
@@ -77,7 +82,7 @@ public class EnigmaImpl implements Enigma{
 			//Buchstaben durch reverseRotor werfen
 			transChars[i] = reverseRotor.translate(transChars[i]);
 			
-			//Buchstaben durch alle Rotoren in umgekehrter Reihenfolge kloppen
+			//Buchstaben durch alle Rotoren in umgekehrter Reihenfolge werfen
 			for(int k = rotors.size()-1; k >= 0; k--){				
 				transChars[i] = rotors.get(k).translate(transChars[i], false);			
 			}
@@ -88,7 +93,7 @@ public class EnigmaImpl implements Enigma{
 						rotors.get(j).rotate();					
 				}**/
 				
-			rotors.get(0).rotate();
+			RotationAllRotors(0);
 			result += transChars[i];	
 			i++;
 			

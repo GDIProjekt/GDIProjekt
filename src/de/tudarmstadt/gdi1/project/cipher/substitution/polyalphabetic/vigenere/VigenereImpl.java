@@ -1,16 +1,11 @@
 package de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.vigenere;
 
+import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.PolyalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.polyalphabetic.Vigenere;
 import de.tudarmstadt.gdi1.project.utils.Utils;
-import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
-/**
- * 
- * @author Laurin Strelow
- *
- */
 public class VigenereImpl extends PolyalphabeticCipherImpl implements Vigenere {
 
 	/**
@@ -38,6 +33,8 @@ public class VigenereImpl extends PolyalphabeticCipherImpl implements Vigenere {
 		Utils utils = new UtilsImpl();
 		
 		for (int i = 0; i < key.length(); i++) {
+			//Erzeugen der Alphabete bei denen je der erste Buchstabe des n-ten Alphabets dem n-ten Buchstaben des keys übereinstimmt
+			//indem das source Alphabet um x-Stellen verschoben wird (x: Index des n-ten Buchstaben des keys im source.Alphabet) 
 			char c = key.charAt(i);
 			int index = src.getIndex(c);
 			

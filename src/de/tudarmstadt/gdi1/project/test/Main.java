@@ -4,6 +4,8 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+//import de.tudarmstadt.gdi1.project.test.alphabet.TemplateObjectWithFrequencyTests;
+//import de.tudarmstadt.gdi1.project.test.analysis.TemplateEncryptionOracleTests;
 
 
 
@@ -43,16 +45,16 @@ import de.tudarmstadt.gdi1.project.test.utils.TemplateUtilsTests;
 	
 	/* analysis */
 	TemplateCaesarCryptanalysisTests.class,
-	//TemplateValidationDecryptionOracle.class,
-	//TemplateVigenereCryptanalysisTests.class,
-	//TemplateIndividualTests.class,
+	TemplateValidationDecryptionOracle.class,
+	TemplateVigenereCryptanalysisTests.class,
+	TemplateIndividualTests.class,
 
 	
 	/* enigma */
-	//TemplateEnigmaTest.class,
-	//TemplatePinBoardTest.class,
-	//TemplateReverseRotorTest.class,
-	//TemplateRotorTest.class,
+	TemplateEnigmaTest.class,
+	TemplatePinBoardTest.class,
+	TemplateReverseRotorTest.class,
+	TemplateRotorTest.class,
 	
 	/* utils */
 	TemplateUtilsTests.class

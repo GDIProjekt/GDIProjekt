@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma.test;
+package de.tudarmstadt.gdi1.project.cipher.enigma.test;
 
 import java.util.Arrays;
 
@@ -49,7 +49,8 @@ public class RotorTest {
 		Assert.assertEquals('b', r.translate('a', true));
 		Assert.assertEquals('c', r.translate('a', false));
 		r.rotate();
-		Assert.assertEquals('b', r.translate('a', true));
+		r.rotate();
+		Assert.assertEquals('c', r.translate('a', true));
 		Assert.assertEquals('d', r.translate('a', false));
 	}
 
