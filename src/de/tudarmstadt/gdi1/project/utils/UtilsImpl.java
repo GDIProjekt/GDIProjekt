@@ -9,6 +9,7 @@ import java.util.LinkedList;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
+import de.tudarmstadt.gdi1.project.utils.Utils;
 
 public class UtilsImpl implements Utils {
 	/**
