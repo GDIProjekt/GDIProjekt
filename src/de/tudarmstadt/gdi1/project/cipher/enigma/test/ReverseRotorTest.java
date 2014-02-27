@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma.test;
+package de.tudarmstadt.gdi1.project.cipher.enigma.test;
 
 import static org.junit.Assert.assertEquals;
 

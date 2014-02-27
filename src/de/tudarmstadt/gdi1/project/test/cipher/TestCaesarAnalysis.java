@@ -46,7 +46,7 @@ public class TestCaesarAnalysis {
 		
 		final int key = 15;
 		
-		Caesar caeser = new CaesarImpl(defaultAlphabet, key);
+		Caesar caeser = new CaesarImpl(key, defaultAlphabet);
 		String cipherText = caeser.encrypt(plainText);
 		
 		CaesarCryptanalysis crypt = new CaesarCryptanalysisImpl();
@@ -66,7 +66,7 @@ public class TestCaesarAnalysis {
 		
 		final int key = 9;
 		
-		Caesar caeser = new CaesarImpl(defaultAlphabet, key);
+		Caesar caeser = new CaesarImpl(key, defaultAlphabet);
 		String cipherText = caeser.encrypt(plainText);
 		
 		CaesarCryptanalysis crypt = new CaesarCryptanalysisImpl();
@@ -86,7 +86,7 @@ public class TestCaesarAnalysis {
 		
 		final int key = 6;
 		
-		Caesar caeser = new CaesarImpl(defaultAlphabet, key);
+		Caesar caeser = new CaesarImpl(key, defaultAlphabet);
 		String cipherText = caeser.encrypt(plainText);
 		
 		CaesarCryptanalysis crypt = new CaesarCryptanalysisImpl();

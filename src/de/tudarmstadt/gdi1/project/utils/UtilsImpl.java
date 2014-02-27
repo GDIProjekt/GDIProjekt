@@ -1,15 +1,3 @@
-package src.de.tudarmstadt.gdi1.project.utils;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.HashMap;
-import java.util.LinkedList;
-
-import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
-
 package de.tudarmstadt.gdi1.project.utils;
 
 import java.util.Arrays;
@@ -110,6 +98,7 @@ public class UtilsImpl implements de.tudarmstadt.gdi1.project.utils.Utils {
 			}
 			
 		}
+		return result;
 	}
 
 	@Override

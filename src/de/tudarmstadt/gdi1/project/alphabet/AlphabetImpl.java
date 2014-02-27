@@ -17,7 +17,7 @@ public class AlphabetImpl implements Alphabet{
 	 private ArrayList<Character> list;
 	 
 	    /**
-	    *Konstruktor fuer ein Alphabet
+	    * Konstruktor fuer ein Alphabet
 	    *@param chars Eine Collection in der die Buchstaben als Character uebergeben werden.
 	    **/
 	    public AlphabetImpl (Collection <Character> chars) {

@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	Main.class,
 	TestMonoalphabeticCribAnalysis.class,
-	TestMonoalphabeticKCAnalysis.class
+	//TestMonoalphabeticKCAnalysis.class
 	})
 public class TestAll {
 

@@ -1,4 +1,5 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma;
+package de.tudarmstadt.gdi1.project.cipher.enigma;
+
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Rotor;
@@ -35,7 +36,7 @@ public class RotorImpl implements Rotor {
 		}
 		
 		initialEntryToExit = entryToExit;
-		//Rotiert so oft wie die übergebene startPosition es verlangt
+		//Rotiert so oft wie die ��bergebene startPosition es verlangt
 		for(int j = 0; j < startPosition%entryAlph.size(); j++){
 			rotate();	
 		}
