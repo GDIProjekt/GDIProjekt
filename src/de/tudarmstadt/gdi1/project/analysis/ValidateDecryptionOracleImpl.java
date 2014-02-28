@@ -11,14 +11,13 @@ import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
  *
  */
 public class ValidateDecryptionOracleImpl implements ValidateDecryptionOracle {
-
 	private Distribution distribution;
 	private Dictionary dictionary;
 	
 	/**
-	 * Der Konstruktor für das ValidateDecryptionOracle.
-	 * @param distribution Die Häufigkeitsverteilung mit dem die Beurteilung der Entschlüsselung erfolgen soll.
-	 * @param dictionary Das Wörterbuch mit dem die Beurteilung der Entschlüsselung erfolgen soll.
+	 * Der Konstruktor fuer das ValidateDecryptionOracle.
+	 * @param distribution Die Haeufigkeitsverteilung mit dem die Beurteilung der Entschluesselung erfolgen soll.
+	 * @param dictionary Das Woerterbuch mit dem die Beurteilung der Entschluesselung erfolgen soll.
 	 */
 	public ValidateDecryptionOracleImpl(Distribution distribution, Dictionary dictionary) {
 		super();
@@ -45,8 +44,8 @@ public class ValidateDecryptionOracleImpl implements ValidateDecryptionOracle {
 		
 		double averageVariance = variance/(double) alphabet.size();
 		
-		//Wir vergleichen die Häufigkeit eines Buchstaben im plaintext mit der Häufigkeit des Buchstaben in der normalen Verteilung
-		//Diese Abweichungen sollten möglichst gering sein, sonst ist mit hoher Wahrscheinlichkeit der plaintext kein gute Entschlüsselung.
+		//Wir vergleichen die Haeufigkeit eines Buchstaben im plaintext mit der Haeufigkeit des Buchstaben in der normalen Verteilung
+		//Diese Abweichungen sollten moeglichst gering sein, sonst ist mit hoher Wahrscheinlichkeit der plaintext kein gute Entschluesselung.
 		
 		if (averageVariance > 0.1) {
 			return false;
@@ -60,9 +59,9 @@ public class ValidateDecryptionOracleImpl implements ValidateDecryptionOracle {
 		}
 		
 		//Im Durchschnitt hat ein Deutsches Wort 5,3 Buchstaben (...)
-		//Daher erwarten wir im plaintext plaintext.length/5.3 Wörter im Text
-		//Dabei kleinen Texten hier große Abweichungen geben kann und nicht unbedingt alle Wörter im Wörter buch sind,
-		// Erwarten wir dass 50% gefunden werden.
+		//Daher erwarten wir im plaintext plaintext.length/5.3 Woerter im Text
+		//Dabei kleinen Texten hier grosse Abweichungen geben kann und nicht unbedingt alle Woerter im Woerterbuch sind,
+		//erwarten wir dass 50% gefunden werden.
 		
 		double averageWordsInPlainText = (double) plaintext.length()/5.3;
 		double expectedFoundWords = averageWordsInPlainText*0.5;
@@ -74,3 +73,4 @@ public class ValidateDecryptionOracleImpl implements ValidateDecryptionOracle {
 	}
 
 }
+
