@@ -34,6 +34,7 @@ public class DictionaryImpl implements Dictionary {
 		TreeSet<String> sortedWords = new TreeSet<String>();
 		
 		Scanner scanner = new Scanner(text);
+		//useDelimiter: Trennungszeichen für Wörter
 		scanner.useDelimiter("[,!?.\\s]+");
 		
 		while(scanner.hasNext()) {
