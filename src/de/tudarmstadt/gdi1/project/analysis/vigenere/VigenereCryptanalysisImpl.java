@@ -96,7 +96,7 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		 * Überprüft ob sich eine Zeichenfolge wiederholt
 		 * @param text Die zu überprüfende Zeichenfolge
 		 * @param laenge Länge der Zeichenkette
-		 * @param plp 
+		 * @param plp Definiert die die Sequenz und n
 		 * @return int
 		 */
 		public int check (String text, int laenge, int plp) {
