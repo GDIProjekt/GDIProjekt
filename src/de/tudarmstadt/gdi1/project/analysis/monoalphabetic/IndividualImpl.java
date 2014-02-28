@@ -17,9 +17,9 @@ public class IndividualImpl implements Individual {
 
 	
 	/**
-	 * Kostruktor für ein Indiviuum. Es besteht aus
+	 * Kostruktor fuer ein Individuum. Es besteht aus
 	 * @param alphabet einem Alphabet
-	 * @param fitness einem Fitness wert.
+	 * @param fitness einem Fitnesswert.
 	 */
 	public IndividualImpl(Alphabet alphabet, double fitness) {
 		super();
@@ -27,9 +27,10 @@ public class IndividualImpl implements Individual {
 		this.fitness = fitness;
 	}
 
+
 	/**
-	 * Konstruktor für ein Individuum. Aus chars wird das Alphabet für das Individuum erstellt. Der Fitness wert wird auf 0 gesetzt.
-	 * @param chars Die Array aus dem das Alphabet erstellt wird. Es sollte kein Buchstabe doppelt vorkomme.
+	 * Konstruktor fuer ein Individuum. Aus chars wird das Alphabet fuer das Individuum erstellt. Der Fitnesswert wird auf 0 gesetzt.
+	 * @param chars Das Array aus dem das Alphabet erstellt wird. Es sollte kein Buchstabe doppelt vorkommen.
 	 */
 	public IndividualImpl(char[] chars) {
 		super();

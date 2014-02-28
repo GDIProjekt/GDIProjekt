@@ -12,15 +12,21 @@ import java.util.TreeSet;
  *
  */
 public class DictionaryImpl implements Dictionary {
-
+	
+	/**
+	 * Das im Konstruktor uebergebene Alphabet
+	 */
 	Alphabet alphabet;
 	
+	/**
+	 * Eine Liste aller Woerter aus dem im Konstruktor uebergebenen Text
+	 */
 	List<String> words;
 	
 	/**
-	 * Konstruktor für die Implementierung des Dictionary Interfaces.
-	 * @param alphabet Alphabet über dem das Dictionary erstellt werden soll.
-	 * @param text Der Text aus dem das Dictionary erstellt werden soll; Wörter werden mit Leerzeichen, ',', '!', '?' getrennt.
+	 * Konstruktor fuer die Implementierung des Dictionary Interfaces.
+	 * @param alphabet Alphabet ueber dem das Dictionary erstellt werden soll.
+	 * @param text Der Text aus dem das Dictionary erstellt werden soll; Woerter werden mit Leerzeichen, ',', '!', '?' getrennt.
 	 */
 	public DictionaryImpl(Alphabet alphabet,String text) {
 		this.alphabet = alphabet;

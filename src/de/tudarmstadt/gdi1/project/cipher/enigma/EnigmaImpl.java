@@ -3,11 +3,21 @@ import java.util.List;
 
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
 
-
+/**
+ * 
+ * @author Quoc Thong Huynh, ï¿¼Dennis Kuhn, Moritz Matthiesen, ï¿¼Erik Laurin Strelow
+ *
+ */
 public class EnigmaImpl implements Enigma{
 	List<Rotor> rotors;
 	PinBoard pinboard;
 	ReverseRotor reverseRotor;
+	/**
+	 * Konstruktor der Enigma
+	 * @param rotors Liste der Rotoren
+	 * @param pinboard Das Steckbrett
+	 * @param reverseRotor Der Umkehrrotor
+	 */
 	public EnigmaImpl (List<Rotor> rotors, PinBoard pinboard, ReverseRotor reverseRotor){
 		this.rotors = rotors;
 		this.pinboard = pinboard;
@@ -52,7 +62,11 @@ public class EnigmaImpl implements Enigma{
 		
 		return result;
 	}
-	
+	/**
+	 * Hilfsprozedur RotationAllRotors: Rotiert stets den Rotor an der Stelle i, prüft ob rotate() true ausgibt (also eine komplette Umdrehung erfolgt ist) und ob es einen
+	 * 									weiteren Rotor gibt, wenn ja wird RotationAllRotors rekursiv für den nächsten Rotor aufgerufen 
+	 * @param i Der zu rotierende Rotor
+	 */
 	public void RotationAllRotors(int i){
 	
 		if((rotors.get(i).rotate())&&(i+1<rotors.size()))

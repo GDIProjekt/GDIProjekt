@@ -13,7 +13,10 @@ import java.util.Iterator;
  *
  */
 public class AlphabetImpl implements Alphabet{
-
+	
+	/**
+	 * an ArrayList of all the characters of a given alphabet
+	 */
 	 private ArrayList<Character> list;
 	 
 	    /**
@@ -27,7 +30,7 @@ public class AlphabetImpl implements Alphabet{
 	        
 	        for (Character c : chars) {
 	            if (list.contains(c)) 
-	              throw new IllegalArgumentException("Character only once in Alphabet....");
+	              throw new IllegalArgumentException("Error: At least one character in given alphabet appears twice.");
 	            else
 	            	list.add(c);
 	        }
@@ -117,7 +120,7 @@ public class AlphabetImpl implements Alphabet{
 	    }
 	    
 	    /**
-	     * Klasse fuer die Implementierug des Iterator Infterfaces, wird gebraucht fuer das Iterable Interface vom Alphabet.
+	     * Klasse fuer die Implementierug des Iterator Interfaces, wird gebraucht fuer das Iterable Interface vom Alphabet.
 	     * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
 	     *
 	     */
