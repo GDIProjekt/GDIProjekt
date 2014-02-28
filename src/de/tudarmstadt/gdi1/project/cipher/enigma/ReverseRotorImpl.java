@@ -13,9 +13,9 @@ public class ReverseRotorImpl implements ReverseRotor{
 	Alphabet exitAlph;
 	
 	/**
-	 * 
-	 * @param entryAlph
-	 * @param exitAlph
+	 * Konstruktor des ReverseRotorImpl
+	 * @param entryAlph Das Eingangsalphabet
+	 * @param exitAlph Das Ausgangsalphabet
 	 */
 	public ReverseRotorImpl (Alphabet entryAlph, Alphabet exitAlph){
 		for (Character c: entryAlph.asCharArray()){
