@@ -312,7 +312,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 	public double computeFitness(Individual individual, String ciphertext,
 			Alphabet alphabet, Distribution distribution, Dictionary dictionary) {
 
-		final int ngramSize = 1;
+		final int ngramSize = 3;
 		final double frequencyWeight = 0.3;
 		final double wordWeight = 1.0;
 		
@@ -335,10 +335,15 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 					double diff = Math.abs(cipherDistribution.getFrequency(gram) - distribution.getFrequency(gram));
 				
 					//diff ist ein wert zwischen 0.0 (sehr nah) und 1.0 (weit entfernt)
+					if (diff < 0.0001)
+						diff = 0.001;
 					
-					if (diff < 0.05) {
+					diff *= 1000;
+					
+					fitness += 1/diff;
+					/*if (diff < 0.05) {
 						fitness += i*frequencyWeight;
-					}
+					}*/
 				}
 			}
 		}
