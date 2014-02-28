@@ -1,4 +1,4 @@
-package de.tudarmstadt.gdi1.project.analysis.vigenere;
+package src.de.tudarmstadt.gdi1.project.analysis.vigenere;
 
 import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysis;
 import de.tudarmstadt.gdi1.project.alphabet.*;
@@ -161,7 +161,7 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		 * @param alphabet
 		 * @return
 		 */	
-		public String translate (String klartext, String chiffretext, Alphabet alphabet) {
+		public String translate (String chiffretext, String klartext, Alphabet alphabet) {
 			StringBuilder result = new StringBuilder();
 			for (int i = 0; i < chiffretext.length(); i++) {
 				
@@ -184,7 +184,7 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		 * @return String der Schluessel
 		 */
 		public String getKey1 (String klartext, String chiffretext, Alphabet alphabet) {
-			String text = translate(chiffretext, klartext, alphabet);
+			String text = translate(klartext, chiffretext, alphabet);
 			for (int i = 1; i <= text.length() - 1; i++) {
 				
 				if (text.substring(0, i).length() <= text.substring(i, text.length()).length()){
@@ -212,23 +212,24 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		 * @return String, den Schluessel
 		 */
 		public String getKey2 (String chiffretext, String klartext, Alphabet alphabet) {
-			String text = translate(klartext, chiffretext, alphabet);		
+			String text = translate(chiffretext, klartext, alphabet);		
 			String schluessel;
 			String subschluessel;
 			for (int i = 1; i <= text.length() - 1; i++) {
 				if (text.charAt(0) == (text.charAt(i))) {
 					if (!(i == 1 && text.charAt(0) == text.charAt(1)))  {
 						schluessel = text.substring(0, i);
-						subschluessel = schluessel;
-						if (subschluessel != null) {
-							for (int l = 0; l <= i - 1; l ++) {
-								if (subschluessel.length() <= text.substring(i, text.length()).length()) {
-									if (subschluessel.equals(text.substring(i, i + subschluessel.length()))) {
-										return schluessel;
-									} else subschluessel = subschluessel.substring(0, subschluessel.length() - 1);
-								}	else subschluessel = subschluessel.substring(0, subschluessel.length() - 1);
-							}
-						}
+						subschluessel = schluessel;	
+						for (int l = 0; l <= schluessel.length() - 1; l ++) {
+							if (subschluessel.length() <= text.substring(i, text.length()).length()) {
+								if (subschluessel.equals(text.substring(i, i + subschluessel.length()))) {
+									return schluessel;
+								} 
+							}	else 
+								if (!subschluessel.equals("")) { 
+									subschluessel = subschluessel.substring(0, subschluessel.length() - 1);
+								}
+						}					
 					}
 				}
 			}
