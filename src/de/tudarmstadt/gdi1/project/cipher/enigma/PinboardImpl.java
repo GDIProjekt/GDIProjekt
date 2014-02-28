@@ -13,9 +13,9 @@ public class PinboardImpl implements PinBoard{
 	Alphabet dest;
 	
 	/**
-	 * 
-	 * @param source
-	 * @param dest
+	 * Konstruktor des PinboardImpl
+	 * @param source Das Eingangsalphabet
+	 * @param dest Das Ausgangsalphabet
 	 */
 	public PinboardImpl(Alphabet source, Alphabet dest){
 		//prüfen ob Alphabet bzw. die Buchstaben symmetrisch zueinander sind, wenn nicht wird eine Exception geworfen
