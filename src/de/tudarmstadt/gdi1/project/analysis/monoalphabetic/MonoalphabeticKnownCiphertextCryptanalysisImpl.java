@@ -2,12 +2,15 @@ package de.tudarmstadt.gdi1.project.analysis.monoalphabetic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
+import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
@@ -68,7 +71,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			stableCounter = 0;
 			generationCounter = 0;
 			
-			while (generationCounter < generationsTilRestart) {
+			while (generationCounter < generationsTilRestart && stableCounter <= stableRunsTillBruteForce) {
 			
 				for (Individual i : population) {
 					computeFitness(i, ciphertext, alphabet, distribution, dictionary);
@@ -76,14 +79,20 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			
 				population = computeSurvivors(ciphertext, alphabet, population, distribution, dictionary, numberOfSurvivors);
 			
-				if ((population.get(0).equals(bestIndividual))) {
+				if ((bestIndividual.equals(population.get(0)))) {
 					stableCounter++;
 				} else {
 					stableCounter = 0;
 					bestIndividual = population.get(0);
+					
+					
+					
 				}
 				
 				if (stableCounter == stableRunsTillBruteForce) {
+					
+					foundSolution = true;
+					break;
 					
 					//für die letzten buchstaben benutzen wir reconstructKey,
 					//dazu löschen wir im ersten Schritt zwei Buchstaben und danach immer einer und werten die ergebnisse aus.
@@ -124,6 +133,9 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 	 */
 	public Individual bruteForceBacktracking(int changePosition, Individual individual, ValidateDecryptionOracle validateDecryptionOracle, 
 			Alphabet plainAlphabet, String ciphertext, Distribution distribution, Dictionary dictionary) {
+		
+		
+		///wenn man hier nur sinnvoll tauscht und und nicht alle möglichen dinge tauscht kann das hier noch sinn machen ;)
 		
 		Alphabet cipherAlphabet = individual.getAlphabet();
 		
@@ -169,9 +181,62 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 		
 		List<Individual> population = new ArrayList<Individual>();
 		
-		for (int i = 0; i < populationSize; i++) {
-			//get potential assigment
+		MonoalphabeticCribCryptanalysisImpl xyz = new MonoalphabeticCribCryptanalysisImpl();
+		
+		HashMap<Character, Character> emptyKey = new HashMap<Character, Character>();
+		HashMap<Character, Collection<Character>> potentialAssigmentMap = new HashMap<Character, Collection<Character>>();
+ 		List<String> frequentChars = distribution.getSorted(1);
+		
+ 		//wir erstellen eine Map von der zu jeden Buchstaben, eine List mit den besten belegungen erstellt wird
+		for (Character c : alphabet) {
+			Collection<Character> potentialAssigmentColl = xyz.getPotentialAssignments(c, emptyKey, ciphertext, alphabet, distribution, null);
+			potentialAssigmentMap.put(c, potentialAssigmentColl);
 		}
+		
+		int i = 0;
+		while (population.size() < populationSize) {
+			
+			char[] chars = new char[alphabet.size()];
+			
+			for (int j = 0; j < alphabet.size(); j++) {
+				
+				//der index verschiebt sich jedes mal, so dass jedes Individuum anderes aussieht
+				int index = (i+j+6)%alphabet.size();
+				
+				char c = frequentChars.get(index).charAt(0);
+				
+				Collection<Character> potentialAssigmentColl = potentialAssigmentMap.get(c);
+				
+				//wir suchen nach dem ersten nicht belegten character, potentialAssigmentColl hat immer alphabet.size()-1 Einträge, womit immer einer gefunden wird
+				for (Character x : potentialAssigmentColl) {
+					
+					boolean found = false;
+					for (int y = 0; y < chars.length; y++) {
+						if (chars[y] == x) {
+							found = true;
+							break;
+						}
+					}
+					
+					if (found == false) {
+						chars[index] = x;
+						break;
+					}
+					
+				}
+			}
+			
+			
+			Individual indi = new IndividualImpl(chars);
+			
+			if (!population.contains(indi)) {
+				population.add(indi);
+				System.out.println(Arrays.toString(chars));
+			}
+			
+			i++;
+		}
+		
 		
 		///wenn man etwas hat und dieses gibt dir zu einem buchstaben eine liste von zeichen zurück, die sortiert nach der differenz der frequenz
 		//dabei sollten immer es so gewählt werden, dass man diese nimmt
@@ -217,7 +282,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			Individual newIndividual = new IndividualImpl(array);
 			nextGeneration.add(newIndividual);
 			
-			chosenSurvivor++;
+			chosenSurvivor = (chosenSurvivor+1)%survivors.size();
 		}
 		
 		nextGeneration.addAll(survivors);
@@ -251,8 +316,8 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			Alphabet alphabet, Distribution distribution, Dictionary dictionary) {
 
 		final int ngramSize = 3;
-		final double frequencyWeight = 1.0;
-		final double wordWeight = 2.0;
+		final double frequencyWeight = 0.3;
+		final double wordWeight = 1.0;
 		
 		double fitness = 0.0;
 		
@@ -264,10 +329,20 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			List<String> grams = distribution.getSorted(i);
 			
 			for (String gram : grams) {
-				cipherDistribution.getFrequency(gram);
-				distribution.getFrequency(gram);
 				
-				fitness += frequencyWeight/Math.abs(cipherDistribution.getFrequency(gram) - distribution.getFrequency(gram));
+				double normalFrequency = distribution.getFrequency(gram);
+				double decryptedFreqeuncy = cipherDistribution.getFrequency(gram);
+				
+				if (normalFrequency > 0.01 || decryptedFreqeuncy > 0.01) {
+					
+					double diff = Math.abs(cipherDistribution.getFrequency(gram) - distribution.getFrequency(gram))*100000;
+				
+					//diff ist ein wert zwischen 0.0 (sehr nah) und 1.0 (weit entfernt)
+					
+					if (diff < 0.05) {
+						fitness += i*frequencyWeight;
+					}
+				}
 			}
 		}
 		
@@ -300,6 +375,8 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 		
 			String thirdLine = "null";
 			String fourthLine = "null";
+			String fifthLine =  "null";
+			
 			int correctness = 0;
 			if (bestIndividual != null) {
 				thirdLine = Arrays.toString(bestIndividual.getAlphabet().asCharArray());
@@ -317,14 +394,16 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 					}
 				}
 				fourthLine += "]";
+				fifthLine = "fitness: " + bestIndividual.getFitness();
 			}
 		
 			String result = firstLine + System.lineSeparator()
 				+ secondLine + System.lineSeparator()
 				+ thirdLine + System.lineSeparator() 
 				+ fourthLine + System.lineSeparator()
+				+ fifthLine + System.lineSeparator() 
 				+ "generations: " + generationCounter + System.lineSeparator()
-				+ "stable: " + stableCounter
+				+ "stable: " + stableCounter + System.lineSeparator()
 				+ "correct: " + correctness;
 				
 			return result;

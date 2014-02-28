@@ -20,6 +20,7 @@ import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaC
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCribCryptanalysis;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCribCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticKnownCiphertextCryptanalysis;
+import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticKnownCiphertextCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysis;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinBoard;
@@ -49,8 +50,8 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
  *
  */
 public class FactoryIM implements Factory{
-	
-    public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {
+
+	public Distribution getDistributionInstance(Alphabet source, String text, int ngramsize) {
         return new DistributionImpl(source, text, ngramsize);
     }
     
@@ -86,7 +87,7 @@ public class FactoryIM implements Factory{
         return new MonoalphabeticCribCryptanalysisImpl();
     }
     public MonoalphabeticKnownCiphertextCryptanalysis getMonoalphabeticKnownCiphertextCryptanalysisInstance() {
-        return null;
+        return new MonoalphabeticKnownCiphertextCryptanalysisImpl();
     }
     public VigenereCryptanalysis getVigenereCryptanalysisInstance() {
         return null;
