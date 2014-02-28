@@ -71,22 +71,19 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			stableCounter = 0;
 			generationCounter = 0;
 			
-			while (generationCounter < generationsTilRestart && stableCounter <= stableRunsTillBruteForce) {
+			while (generationCounter < generationsTilRestart || stableCounter <= stableRunsTillBruteForce) {
 			
 				for (Individual i : population) {
 					computeFitness(i, ciphertext, alphabet, distribution, dictionary);
 				}
 			
 				population = computeSurvivors(ciphertext, alphabet, population, distribution, dictionary, numberOfSurvivors);
-			
+				
 				if ((bestIndividual.equals(population.get(0)))) {
 					stableCounter++;
 				} else {
 					stableCounter = 0;
 					bestIndividual = population.get(0);
-					
-					
-					
 				}
 				
 				if (stableCounter == stableRunsTillBruteForce) {
@@ -177,7 +174,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 			Alphabet alphabet, Distribution distribution, int populationSize) {
 
 		
-		Distribution cipherDistribution = new DistributionImpl(alphabet, ciphertext, 1);
+		//Distribution cipherDistribution = new DistributionImpl(alphabet, ciphertext, 1);
 		
 		List<Individual> population = new ArrayList<Individual>();
 		
@@ -315,7 +312,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 	public double computeFitness(Individual individual, String ciphertext,
 			Alphabet alphabet, Distribution distribution, Dictionary dictionary) {
 
-		final int ngramSize = 3;
+		final int ngramSize = 1;
 		final double frequencyWeight = 0.3;
 		final double wordWeight = 1.0;
 		
@@ -325,7 +322,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 		String decryptedText = cipher.decrypt(ciphertext);
 		Distribution cipherDistribution = new DistributionImpl(alphabet, decryptedText, ngramSize);
 		
-		for (int i = 0; i <= ngramSize; i++) {
+		for (int i = 1; i <= ngramSize; i++) {
 			List<String> grams = distribution.getSorted(i);
 			
 			for (String gram : grams) {
@@ -335,7 +332,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 				
 				if (normalFrequency > 0.01 || decryptedFreqeuncy > 0.01) {
 					
-					double diff = Math.abs(cipherDistribution.getFrequency(gram) - distribution.getFrequency(gram))*100000;
+					double diff = Math.abs(cipherDistribution.getFrequency(gram) - distribution.getFrequency(gram));
 				
 					//diff ist ein wert zwischen 0.0 (sehr nah) und 1.0 (weit entfernt)
 					
