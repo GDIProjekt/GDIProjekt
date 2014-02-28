@@ -19,7 +19,9 @@ import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
  */
 public class DistributionImpl implements Distribution {
 
-	
+	/**
+	 * Das Alphabet Ã¼ber dem die Verteilung definiert ist.
+	 */
 	private Alphabet alphabet;
 	
 	/**
@@ -48,21 +50,21 @@ public class DistributionImpl implements Distribution {
 		for (int i = 1; i <= ngramsize; i++)
 			ngramNumbers[i] = i;
 		
-		//alle n-Gramme, Schlüssel i gibt die Liste aller i-Gramme aus
+		//alle n-Gramme, Schluessel i gibt die Liste aller i-Gramme aus
 		Map<Integer, List<String>> ngrams = utils.ngramize(normalizedText, ngramNumbers);
 		
 		for (Integer gramSize : ngrams.keySet()) {
 			
-			//alle n-Gramme einer Größe n übergeben
+			//alle n-Gramme einer Groesse n uebergeben
 			List<String> grams = ngrams.get(gramSize);
 			
 			HashMap<String, Double> gramMap = new HashMap<String, Double>();
 			
 			for (String gram : grams) {
-				//wenn das n-Gramm noch nicht gezählt wurde wird es in die Map aller Häufigkeiten eingefügt und erhält die Häufigkeit 1.0 
+				//wenn das n-Gramm noch nicht gezaehlt wurde wird es in die Map aller Haeufigkeiten eingefuegt und erhaelt die Haeufigkeit 1.0 
 				if (!gramMap.containsKey(gram)) {
 					gramMap.put(gram, 1.0);
-				//ansonsten wird dieses n-Gramms neu eingefügt, allerdings mit dem um 1.0 hochgezählten Häufigkeitswert
+				//ansonsten wird dieses n-Gramms neu eingefuegt, allerdings mit dem um 1.0 hochgezaehlten Haeufigkeitswert
 				} 
 				else {
 					gramMap.put(gram, gramMap.get(gram) +1.0);
@@ -70,12 +72,12 @@ public class DistributionImpl implements Distribution {
 			}
 			
 			double allGrams = grams.size();
-			//Bestimmung der relativen Häufigkeit des n-Gramms zu allen n-Gramms der Größe n
+			//Bestimmung der relativen Haeufigkeit des n-Gramms zu allen n-Gramms der Groesse n
 			for (String gram : gramMap.keySet()) {
 				gramMap.put(gram, gramMap.get(gram)/allGrams);
 			}
 			
-			//Einsetzen aller n-Gramme mit ihren Häufigkeit, wobei der Schlüssel den Wert n hat
+			//Einsetzen aller n-Gramme mit ihren Haeufigkeit, wobei der Schlï¿½ssel den Wert n hat
 			ngramMap.put(gramSize, gramMap);
 		}
 			
@@ -124,23 +126,20 @@ public class DistributionImpl implements Distribution {
 		
 		int length = key.length();
 		
-		//wenn die Länge des keys nicht in der Map aller n-Gramme nicht vorhanden ist wird ein Fehler ausgeworfen
+		//wenn die Laenge des keys nicht in der Map aller n-Gramme nicht vorhanden ist wird ein Fehler ausgeworfen
 		if (!ngramMap.containsKey(length))
-			return 0;
+			throw new IllegalArgumentException("invalid length");
 		
 		HashMap<String, Double> gramMap = ngramMap.get(length);
 		
-		//wenn der key in der Map der n-Gramme der selben Länge wie vom key vorhanden ist wird die Häufigkeit des key ausgegeben
+		//wenn der key in der Map der n-Gramme der selben Laenge wie vom key vorhanden ist wird die Haeufigkeit des key ausgegeben
 		if (gramMap.containsKey(key)) {
 			return gramMap.get(key);
-		} else {
-			return 0.0;
-		}
-			/*if (alphabet.allows(key)){ FIXME
+		} else if (alphabet.allows(key)){
 			return 0;
 		} else {
 			throw new IllegalArgumentException("Key is not part of alphabet");
-		}*/
+		}
 	}
 
 	@Override
@@ -158,7 +157,7 @@ public class DistributionImpl implements Distribution {
 		
 		List<String> list = getSorted(length);
 		
-		if (rank > list.size())
+		if (rank > list.size() || rank < 0)
 			return null;
 		
 		return list.get(rank);

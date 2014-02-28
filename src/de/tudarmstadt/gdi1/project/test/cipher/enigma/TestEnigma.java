@@ -18,37 +18,13 @@ import de.tudarmstadt.gdi1.project.test.TemplateTestCore;
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
 /**
- * 
+ * Testet die Enigma Implmentierung
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
-public class EnigmaTest {
+public class TestEnigma {
 	private Factory f = TemplateTestCore.getFactory();
 
-	@Test
-	public void simpleTest() {
-		Rotor r1 = f.getRotorInstance(TemplateTestUtils.getDefaultAlphabet(), TemplateTestUtils.getDefaultAlphabet(), 0);
-		List<Rotor> rotorlist = new LinkedList<>();
-		rotorlist.add(r1);
-		PinBoard pb = f.getPinBoardInstance(TemplateTestUtils.getDefaultAlphabet(), TemplateTestUtils.getDefaultAlphabet());
-		ReverseRotor rr = f.getReverseRotatorInstance(TemplateTestUtils.getDefaultAlphabet(),
-				TemplateTestUtils.getReversedDefaultAlphabet());
-		Enigma e = f.getEnigmaInstance(rotorlist, pb, rr);
-		assertEquals("hallowelt", e.decrypt(e.encrypt("hallowelt")));
-	}
-
-	@Test
-	public void smallAlphabetSingleRotorTest() {
-		Alphabet rotor1Alphabet = f.getAlphabetInstance(Arrays.asList('b', 'c', 'a', 'd'));
-		Rotor r1 = f.getRotorInstance(TemplateTestUtils.getMinimalAlphabet(), rotor1Alphabet, 0);
-		List<Rotor> rotorList = new LinkedList<>();
-		rotorList.add(r1);
-		PinBoard pb = f.getPinBoardInstance(TemplateTestUtils.getMinimalAlphabet(), TemplateTestUtils.getMinimalAlphabet());
-		ReverseRotor rr = f.getReverseRotatorInstance(TemplateTestUtils.getMinimalAlphabet(),
-				TemplateTestUtils.getReversedMinimalAlphabet());
-		Enigma e = f.getEnigmaInstance(rotorList, pb, rr);
-		assertEquals("bc", e.encrypt("aa"));
-	}
 	@Test
 	public void twoRotorsTest(){
 		Alphabet rotor1Alphabet = f.getAlphabetInstance(Arrays.asList(

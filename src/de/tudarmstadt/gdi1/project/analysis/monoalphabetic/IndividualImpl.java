@@ -12,7 +12,14 @@ import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
  */
 public class IndividualImpl implements Individual {
 
+	/**
+	 * Das Alphabet des Individuums.
+	 */
 	private Alphabet alphabet;
+	
+	/**
+	 * Der fitness Wert dieses Individuums.
+	 */
 	private double fitness;
 
 	
@@ -64,11 +71,9 @@ public class IndividualImpl implements Individual {
 	public boolean equals(Object o) {
 		
 		if (o instanceof Individual) {
-			Individual i = (Individual) o;
-			
+			Individual i = (Individual) o;	
 			return alphabet.equals(i);
 		}
-		
 		return o.equals(this);
 	}
 	

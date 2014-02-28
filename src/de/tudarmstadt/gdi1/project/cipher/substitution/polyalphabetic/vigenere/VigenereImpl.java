@@ -15,7 +15,7 @@ public class VigenereImpl extends PolyalphabeticCipherImpl implements Vigenere {
 
 	/**
 	 * Konstruktor für die Implementierung des Vignere Interfaces
-	 * @param key Der Schlüssel mit dem verschlüsselt werden soll.
+	 * @param key Der Schluessel mit dem verschlüsselt werden soll.
 	 * @param src Das Klartext Alphabet
 	 */
 	public VigenereImpl(String key, Alphabet src) {
@@ -23,8 +23,8 @@ public class VigenereImpl extends PolyalphabeticCipherImpl implements Vigenere {
 	}
 	
 	/**
-	 * Erstellt ein Array von Alphabeten, für die Verschlüsselung, ausgehend von einen Schlüssel und einem Klartext Alphabet.
-	 * @param key Der Schlüssel
+	 * Erstellt ein Array von Alphabeten, für die Verschlüsselung, ausgehend von einen Schluessel und einem Klartext Alphabet.
+	 * @param key Der Schluessel
 	 * @param src Das Klartext Alphabet.
 	 * @return Die Array von Alphabeten.
 	 */

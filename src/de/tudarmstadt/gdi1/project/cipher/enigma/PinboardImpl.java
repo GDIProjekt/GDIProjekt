@@ -4,12 +4,20 @@ import de.tudarmstadt.gdi1.project.cipher.enigma.PinBoard;
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 
 /**
- * 
+ * Implementierung des PinBoard Interfaces
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
-public class PinboardImpl implements PinBoard{
+public class PinboardImpl implements PinBoard {
+	
+	/**
+	 * Das Eingangsalphabet
+	 */
 	Alphabet source;
+	
+	/**
+	 * Das Ausgangsalphabet
+	 */
 	Alphabet dest;
 	
 	/**

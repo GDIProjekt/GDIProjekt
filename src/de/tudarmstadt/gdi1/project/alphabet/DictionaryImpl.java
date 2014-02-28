@@ -7,11 +7,12 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 /**
- * 
+ * Implementierung des Dictionary Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class DictionaryImpl implements Dictionary {
+	
 	
 	/**
 	 * Das im Konstruktor uebergebene Alphabet
@@ -31,10 +32,17 @@ public class DictionaryImpl implements Dictionary {
 	public DictionaryImpl(Alphabet alphabet,String text) {
 		this.alphabet = alphabet;
 		
+		//sortiert die eingefügten Wörter direkt alphabetisch.
 		TreeSet<String> sortedWords = new TreeSet<String>();
 		
 		Scanner scanner = new Scanner(text);
+<<<<<<< HEAD
 		//useDelimiter: Trennungszeichen f�r W�rter
+=======
+		
+		//Trennungszeichen zwischen den Wörter, also entweder Kommata, !, ?, Leerezeichen
+		// Das + ist ein "oder".
+>>>>>>> branch 'master' of https://github.com/GDIProjekt/GDIProjekt.git
 		scanner.useDelimiter("[,!?.\\s]+");
 		
 		while(scanner.hasNext()) {
@@ -44,6 +52,7 @@ public class DictionaryImpl implements Dictionary {
 				sortedWords.add(s);
 		}
 		
+		//wir erstellen eine Liste um auf den Index zuzugreifen.
 		words = new ArrayList<String>(sortedWords);
 		
 		scanner.close();

@@ -4,14 +4,26 @@ import java.util.List;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
 
 /**
- * 
+ * Implementiert das Enigma Interface.
  * @author Quoc Thong Huynh, Dennis Kuhn, Moritz Matthiesen, Erik Laurin Strelow
  *
  */
-public class EnigmaImpl implements Enigma{
+public class EnigmaImpl implements Enigma {
+	/**
+	 * Liste von Rotoren
+	 */
 	List<Rotor> rotors;
+	
+	/**
+	 * Das Steckbrett
+	 */
 	PinBoard pinboard;
+	
+	/**
+	 * Umkehrrotor
+	 */
 	ReverseRotor reverseRotor;
+	
 	/**
 	 * Konstruktor der Enigma
 	 * @param rotors Liste der Rotoren
@@ -25,6 +37,7 @@ public class EnigmaImpl implements Enigma{
 		
 	}
 	
+	@Override
 	public String encrypt(String text){
 		char[] chars = text.toCharArray();
 		char[] transChars = new char[chars.length];
@@ -62,9 +75,10 @@ public class EnigmaImpl implements Enigma{
 		
 		return result;
 	}
+	
 	/**
-	 * Hilfsprozedur RotationAllRotors: Rotiert stets den Rotor an der Stelle i, pr�ft ob rotate() true ausgibt (also eine komplette Umdrehung erfolgt ist) und ob es einen
-	 * 									weiteren Rotor gibt, wenn ja wird RotationAllRotors rekursiv f�r den n�chsten Rotor aufgerufen 
+	 * Hilfsprozedur RotationAllRotors: Rotiert stets den Rotor an der Stelle i, prueft ob rotate() true ausgibt (also eine komplette Umdrehung erfolgt ist) und ob es einen
+	 * 									weiteren Rotor gibt, wenn ja wird RotationAllRotors rekursiv fuer den naechsten Rotor aufgerufen 
 	 * @param i Der zu rotierende Rotor
 	 */
 	public void RotationAllRotors(int i){
@@ -74,6 +88,7 @@ public class EnigmaImpl implements Enigma{
 	}
 	
 	
+	@Override
 	public String decrypt(String text){
 		char[] chars = text.toCharArray();
 		char[] transChars = new char[chars.length];
@@ -83,7 +98,7 @@ public class EnigmaImpl implements Enigma{
 		for(Character c: chars){
 			transChars[i] = pinboard.translate(c);
 			
-			//Buchstaben durch alle Rotoren pr��geln
+			//Buchstaben durch alle Rotoren pruegeln
 			for(int j = 0; j < rotors.size(); j++){				
 				transChars[i] = rotors.get(j).translate(transChars[i], true);				
 			}

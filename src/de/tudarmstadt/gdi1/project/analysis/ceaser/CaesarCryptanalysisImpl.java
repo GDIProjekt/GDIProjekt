@@ -11,7 +11,7 @@ import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
- * 
+ * Implmentierung des CaesarCryptanalysis Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
@@ -29,6 +29,7 @@ public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
 		List<String> plainCharacters = distribution.getSorted(1);
 		List<String> cipherCharacters = cipherDistribution.getSorted(1);
 		
+		//Gibt an wie viele Buchstaben in die Berechnung einfliessen sollen. Ausgehend vom Haeufigsten.
 		final int deep = (3 >= plainCharacters.size()) ? (plainCharacters.size()-1): 3 ;
 		
 		int[] keys = new int[deep];
@@ -72,8 +73,10 @@ public class CaesarCryptanalysisImpl implements CaesarCryptanalysis {
 			
 		}
 		
+		/**
+		 * Nimmt den Schlüssel mit der geringsten Abweichung
+		 */
 		int lowestAverageVariance = 0;
-		
 		for (int i = 1; i < deep; i++) {
 			if (averageVariance[i] < averageVariance[lowestAverageVariance])
 				lowestAverageVariance = i;

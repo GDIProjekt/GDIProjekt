@@ -22,7 +22,9 @@ import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCribCry
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticKnownCiphertextCryptanalysis;
 import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticKnownCiphertextCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysis;
+import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysisImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
+import de.tudarmstadt.gdi1.project.cipher.enigma.EnigmaImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinBoard;
 import de.tudarmstadt.gdi1.project.cipher.enigma.PinboardImpl;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
@@ -45,7 +47,7 @@ import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
- * 
+ * Implementierung des Factory Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
@@ -90,13 +92,13 @@ public class FactoryIM implements Factory{
         return new MonoalphabeticKnownCiphertextCryptanalysisImpl();
     }
     public VigenereCryptanalysis getVigenereCryptanalysisInstance() {
-        return null;
+        return new VigenereCryptanalysisImpl();
     }
     public Utils getUtilsInstance() {
         return new UtilsImpl();
     }
     public Enigma getEnigmaInstance(List<Rotor> rotors, PinBoard pinboard, ReverseRotor reverseRotor) {
-        return null;
+        return new EnigmaImpl(rotors, pinboard, reverseRotor);
     }
     public PinBoard getPinBoardInstance(Alphabet source, Alphabet destination) {
         return new PinboardImpl(source, destination);

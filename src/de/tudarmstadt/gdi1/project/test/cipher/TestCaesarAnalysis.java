@@ -22,7 +22,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.CaesarImpl
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
 /**
- * 
+ * Testet die Caesar Entschluesselung.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */

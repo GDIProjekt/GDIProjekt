@@ -22,15 +22,26 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Monoalphab
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
 
 /**
- * 
+ * Implementierugn des MonoalphabeticCribCryptanalysis Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class MonoalphabeticCribCryptanalysisImpl implements
 		MonoalphabeticCribCryptanalysis, BacktrackingAnalysis {
 
+	/**
+	 * Gibt den aktuellen Weg an der gegangen wurde an.
+	 */
 	private String currentPath = "";
+	
+	/**
+	 * Gibt die akutellen Belegung key an.
+	 */
 	private Map<Character, Character> currentKey = new HashMap<Character, Character>();;
+	
+	/**
+	 * Zaehlt die Anzahl der Rekursionsschritte.
+	 */
 	private int iterations;
 	
 	@Override
@@ -38,7 +49,6 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 			Distribution distribution, Dictionary dictionary, List<String> cribs) {
 
 		ValidateDecryptionOracle oracle = new ValidateDecryptionOracleImpl(distribution, dictionary);
-		
 		return knownCiphertextAttack(ciphertext, distribution, dictionary, cribs, oracle);
 	}
 	
@@ -57,8 +67,12 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 		
 		Alphabet alphabet = distribution.getAlphabet();
 		
+		///Setzt Werte auf Startwert uns started die Rekursion.
+		
 		Map<Character, Character> constructedKey = reconstructKey(key, ciphertext, alphabet, distribution, dictionary, cribs, validateDecryptionOracle);
 	
+		//Wertet das Ergebnis aus.
+		
 		if (constructedKey == null)
 			return null;
 		
@@ -81,21 +95,25 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 		
 		if (isKeyComplete(key, alphabet)) {
 			
+			//der key ist komplett, wir bewerten den durch den entschluesselten Text, ob wir den Schluessel gefunden haben.
 			String plainText = createPlainTextOfCipherTextFromKey(key, ciphertext, alphabet);
 			
 			if (validateDecryptionOracle.isCorrect(plainText))
 				return key;
 			else
-				return null; //Signalisiert, dass der key komplett ist aber keine richtige Lösung
+				return null; //Signalisiert, dass der key komplett ist aber keine richtige Loesung
 		} else {
 			
+			//Legt fest, ob noch Weg vielversprechend ist.
 			if (isPromisingPath(alphabet, ciphertext, key, distribution, dictionary, cribs) == false)
 				return null;
 			
 			char nextChar = getNextSourceChar(key, alphabet, distribution, dictionary, cribs);
 			
+			//Ermittelt die noch zu belegen Buchstaben und wertet diese.
 			Collection<Character> potentialAssigments = getPotentialAssignments(nextChar, key, ciphertext, alphabet, distribution, dictionary);
 			
+			//geht jeden Weg.
 			for (Character nextCipherChar : potentialAssigments) {
 				key.put(nextChar, nextCipherChar);
 				
@@ -110,7 +128,7 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 				key.remove(nextChar);
 			}
 			
-			return null; //Signalisiert, dass keine richtige Lösung gefunden worden ist.
+			return null; //Signalisiert, dass keine richtige Loesung gefunden worden ist.
 		}
 	}
 
@@ -153,6 +171,8 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 			Alphabet alphabet, Distribution distribution,
 			Dictionary dictionary, List<String> cribs) {
 		
+		//Gibt den Buchstaben (Klartext) aus der Belegt werden soll, dabei werden Haufige Buchstaben und die aus den Cribs zuerst belegt.
+		
 		char mostFrequentChar = alphabet.getChar(0);
 		double frequency = -1.0;
 		
@@ -177,7 +197,6 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 	public boolean isPromisingPath(Alphabet alphabet, String ciphertext,
 			Map<Character, Character> key, Distribution distribution,
 			Dictionary dictionary, Collection<String> cribs) {
-		
 		
 		Set<Character> cribsCharacters = createCharacterSetFromCribsList(cribs);
 		

@@ -4,31 +4,30 @@ import java.util.ArrayList;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
-import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
 import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
- * 
- * @author Quoc Thong Huynh, ???Dennis Kuhn, Moritz Matthiesen, ???Erik Laurin Strelow
+ * Implementierung des KeywordMonoalphabeticCipher Interfaces.
+ * @author Quoc Thong Huynh, Dennis Kuhn, Moritz Matthiesen, Erik Laurin Strelow
  * 
  */
 public class KeywordMonoalphabeticCipherImpl extends MonoalphabeticCipherImpl implements KeywordMonoalphabeticCipher {
 
 	/**
-	 * Konstruktor f??r die KeywordMonoalphabeticCipher Implmentierung
-	 * @param keyWord Das keyWord mit dem verschl??sselt werden soll.
-	 * @param a Das Klartext alphabet, aus diesem wird mit dem Schl??sselwort die Verschl??sselung erstellt.
+	 * Konstruktor fuer die KeywordMonoalphabeticCipher Implmentierung
+	 * @param keyWord Das keyWord mit dem verschluesselt werden soll.
+	 * @param a Das Klartext alphabet, aus diesem wird mit dem Schluesselwort die Verschluesselung erstellt.
 	 */
 	public KeywordMonoalphabeticCipherImpl(String keyWord, Alphabet a) {
 		super(a, createDestAlphabet(keyWord, a));	
 	}
 	
 	/**
-	 * Erstellt aus einem Schl??sselword und einem Klartext Alphabet das Verschl??sselungs Alphabet.
-	 * @param keyWord Das Schl??sselwort
+	 * Erstellt aus einem Schluesselword und einem Klartext Alphabet das Verschluesselungs Alphabet.
+	 * @param keyWord Das Schluesselwort
 	 * @param a Das Klartext Alphabet
-	 * @return Das Verschl??sselungs Alphabet.
+	 * @return Das Verschluesselungs Alphabet.
 	 */
 	private static Alphabet createDestAlphabet(String keyWord, Alphabet a) {
 		char[] array = keyWord.toCharArray();

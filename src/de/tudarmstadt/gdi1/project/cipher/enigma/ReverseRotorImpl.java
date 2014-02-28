@@ -4,12 +4,20 @@ import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
 import de.tudarmstadt.gdi1.project.cipher.enigma.ReverseRotor;
 
 /**
- * 
+ * Implementierung es ReverseRotor des Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
-public class ReverseRotorImpl implements ReverseRotor{
+public class ReverseRotorImpl implements ReverseRotor {
+	
+	/**
+	 * Das Eingangsalphabet
+	 */
 	Alphabet entryAlph;
+	
+	/**
+	 * Das Ausgangsalphabet
+	 */
 	Alphabet exitAlph;
 	
 	/**
