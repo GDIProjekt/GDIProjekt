@@ -40,12 +40,6 @@ public class DictionaryImpl implements Dictionary {
 		
 		Scanner scanner = new Scanner(text);
 
-		//useDelimiter: Trennungszeichen für Wörter
-
-		
-		//Trennungszeichen zwischen den WÃ¶rter, also entweder Kommata, !, ?, Leerezeichen
-		// Das + ist ein "oder".
-
 		
 		//Trennungszeichen zwischen den WÃ¶rter, also entweder Kommata, !, ?, Leerezeichen
 		// Das + ist ein "oder".
