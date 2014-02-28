@@ -1,15 +1,14 @@
 
-package de.tudarmstadt.gdi1.project.cipher.monoalphabetic;
+package de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.*;
 import de.tudarmstadt.gdi1.project.utils.Utils;
 import de.tudarmstadt.gdi1.project.utils.UtilsImpl;
 
 /**
  * Implementierung des Ceasar Interfaces.
- * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ * @author Quoc Thong Huynh, ???Dennis Kuhn, Moritz Matthiesen, ???Erik Laurin Strelow
  *
  */
 public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{
@@ -24,10 +23,10 @@ public class CaesarImpl extends MonoalphabeticCipherImpl implements Caesar{
 	}
 	
 	/**
-	 * Erstellt aus einem Schlüssel und einem Klartext Alphabet das Verschlüsselungs Alphabet.
-	 * @param key Der Schlüssel
+	 * Erstellt aus einem Schl??ssel und einem Klartext Alphabet das Verschl??sselungs Alphabet.
+	 * @param key Der Schl??ssel
 	 * @param src Das Klartext Alphabet
-	 * @return Das Verschlüsselungsalphabet.
+	 * @return Das Verschl??sselungsalphabet.
 	 */
 	private static Alphabet createDestAlphabet(int key, Alphabet src) {
 		Utils util = new UtilsImpl();

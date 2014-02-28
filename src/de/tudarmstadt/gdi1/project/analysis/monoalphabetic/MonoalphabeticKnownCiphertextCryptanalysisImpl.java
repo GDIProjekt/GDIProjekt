@@ -16,8 +16,8 @@ import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 import de.tudarmstadt.gdi1.project.analysis.ValidateDecryptionOracle;
 import de.tudarmstadt.gdi1.project.analysis.ValidateDecryptionOracleImpl;
-import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
 
 /**
  * 

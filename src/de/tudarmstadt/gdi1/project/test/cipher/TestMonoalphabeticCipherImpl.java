@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.gdi1.project.alphabet.*;
-import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.MonoalphabeticCipherImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
 
 /**
  * 
