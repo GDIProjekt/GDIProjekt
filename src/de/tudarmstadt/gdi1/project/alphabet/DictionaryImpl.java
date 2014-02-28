@@ -1,4 +1,4 @@
-package de.tudarmstadt.gdi1.project.alphabet;
+package src.de.tudarmstadt.gdi1.project.alphabet;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+
+
+
 /**
  * Implementierung des Dictionary Interfaces.
- * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
+ * @author Quoc Thong Huynh, ï¿¼Dennis Kuhn, Moritz Matthiesen, ï¿¼Erik Laurin Strelow
  *
  */
 public class DictionaryImpl implements Dictionary {
@@ -32,17 +35,21 @@ public class DictionaryImpl implements Dictionary {
 	public DictionaryImpl(Alphabet alphabet,String text) {
 		this.alphabet = alphabet;
 		
-		//sortiert die eingefügten Wörter direkt alphabetisch.
+		//sortiert die eingefÃ¼gten WÃ¶rter direkt alphabetisch.
 		TreeSet<String> sortedWords = new TreeSet<String>();
 		
 		Scanner scanner = new Scanner(text);
-<<<<<<< HEAD
-		//useDelimiter: Trennungszeichen f�r W�rter
-=======
+
+		//useDelimiter: Trennungszeichen für Wörter
+
 		
-		//Trennungszeichen zwischen den Wörter, also entweder Kommata, !, ?, Leerezeichen
+		//Trennungszeichen zwischen den WÃ¶rter, also entweder Kommata, !, ?, Leerezeichen
 		// Das + ist ein "oder".
->>>>>>> branch 'master' of https://github.com/GDIProjekt/GDIProjekt.git
+
+		
+		//Trennungszeichen zwischen den WÃ¶rter, also entweder Kommata, !, ?, Leerezeichen
+		// Das + ist ein "oder".
+
 		scanner.useDelimiter("[,!?.\\s]+");
 		
 		while(scanner.hasNext()) {
