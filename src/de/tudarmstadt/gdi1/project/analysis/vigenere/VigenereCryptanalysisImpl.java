@@ -5,16 +5,15 @@ import de.tudarmstadt.gdi1.project.alphabet.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 
+ * @author Quoc Thong Huynh, Dennis Kuhn, Moritz Matthiesen, Erik Laurin Strelow
+ *
+ */
 public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 
 	// das is die richtige
-		private int laenge; // mindestlaenge der Sequenz
-		
-		
-		public VigenereCryptanalysisImpl () {
-			laenge = 3;
-		}
+		private int laenge = 3; // mindestlaenge der Sequenz
 		
 		
 		/**		
@@ -56,14 +55,14 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		
 		/**
 		 * Hilfsprozedur für groessterTeiler 10.2.2
-		 * ueberprueft ob alle Werte einer List(Integer) durch p teilbar sind
+		 * ueberprueft rekursiv ob alle Werte einer List(Integer) durch p teilbar sind
 		 * falls ja wird p ausgegeben, falls nein 0
-		 * @param listoe 
-		 * @param l
-		 * @param p
+		 * @param listoe Liste der Integer
+		 * @param l Der Index des zu bearbeitenden Listenelements 
+		 * @param p Der Teiler
 		 * @return Integer l | 0
 		 */
-		public int help (List<Integer> listoe, int l, int p) {
+		 int help (List<Integer> listoe, int l, int p) {
 			if (listoe.get(l)%p == 0 && l == listoe.size() - 1) {
 				return p;
 			}
@@ -77,10 +76,10 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		
 		/**
 		 * 10.2.2
-		 * ueberprueft ein Liste(Integer) und gibt den groessten gemeinsammen Teiler
+		 * ueberprueft eine Liste(Integer) und gibt den groessten gemeinsammen Teiler 
 		 * der Liste aus
-		 * @param list
-		 * @return i
+		 * @param list Die zu überprüfende Liste 
+		 * @return i Der größte gemeinsame Teiler
 		 */
 		public int groessterTeiler (List<Integer> list) {
 			int p = kleinstesElement(list);
@@ -94,11 +93,11 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 		
 		
 		/** Hilfsprozedur fuer distance 10.2.3
-		 * 
-		 * @param klartext
-		 * @param laenge
-		 * @param plp
-		 * @return
+		 * Überprüft ob sich eine Zeichenfolge wiederholt
+		 * @param text Die zu überprüfende Zeichenfolge
+		 * @param laenge Länge der Zeichenkette
+		 * @param plp 
+		 * @return int
 		 */
 		public int check (String text, int laenge, int plp) {
 			String sequence = text.substring(plp, laenge + plp);
@@ -279,5 +278,12 @@ public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 			// TODO Auto-generated method stub
 			return null;
 		} 
+		
+		public String knownPlaintextAttack(String ciphertext, String plaintext, Distribution dist) {
+			return knownPlaintextAttack(ciphertext, plaintext, dist.getAlphabet());
+		}
+		public String knownPlaintextAttack(String ciphertext, String plaintext, Distribution dist, Dictionary dict) {
+			return knownPlaintextAttack(ciphertext, plaintext, dist.getAlphabet());
+		}
 		
 	}
