@@ -290,10 +290,10 @@ public class MonoalphabeticCribCryptanalysisImpl implements
 
 	
 	/**
-	 * Überprüft, ob der übergebenene vollständig ist, d.h alle Buchstaben aus dem Alphabet belegt sind.
-	 * @param key Der key
+	 * Ueberprueft, ob der uebergebenene vollstaendig ist, d.h alle Buchstaben aus dem Alphabet belegt sind.
+	 * @param key Der Schluessel
 	 * @param alphabet Das Alphabet
-	 * @return true wenn der key vollständig ist, sonst false
+	 * @return true wenn der key vollstaendig ist, sonst false
 	 */
 	private boolean isKeyComplete(Map<Character, Character> key, Alphabet alphabet) {
 
