@@ -13,7 +13,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Monoalphab
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
 
 /**
- * 
+ * Testet die MonoalphabeticCipherImpl
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */

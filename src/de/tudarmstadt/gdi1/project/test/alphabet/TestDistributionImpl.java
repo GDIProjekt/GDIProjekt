@@ -17,7 +17,7 @@ import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 
 /**
- * 
+ * Testet die Distribution Implmentierung
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
@@ -66,21 +66,4 @@ public class TestDistributionImpl {
 		
 		assertTrue(simpleAlphabet.equals(simpleDistribution.getAlphabet()));
 	}
-
-	@Test
-	public void testGetFrequency() {
-		String text = "";
-		Distribution simpleDistribution = new DistributionImpl(simpleAlphabet, text, 3);
-
-		//TODO
-	}
-	
-	@Test
-	public void testGetByRank() {
-		String text = "";
-		Distribution simpleDistribution = new DistributionImpl(simpleAlphabet, text, 3);
-		
-		//TODO
-	}
-	
 }

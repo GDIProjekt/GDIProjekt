@@ -1,4 +1,4 @@
-package src.de.tudarmstadt.gdi1.project.analysis.vigenere;
+package de.tudarmstadt.gdi1.project.analysis.vigenere;
 
 import de.tudarmstadt.gdi1.project.analysis.vigenere.VigenereCryptanalysis;
 import de.tudarmstadt.gdi1.project.alphabet.*;
@@ -6,129 +6,131 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Implmenetierung des VigenereCryptanalysis Interfaces.
  * @author Quoc Thong Huynh, Dennis Kuhn, Moritz Matthiesen, Erik Laurin Strelow
  *
  */
 public class VigenereCryptanalysisImpl implements VigenereCryptanalysis{
 
 	// das is die richtige
-		private int laenge = 3; // mindestlaenge der Sequenz
+	private int laenge = 3; // mindestlaenge der Sequenz
 		
 		
-		/**		
-		 * Erhaelt eine Zahl als Eingabe und gibt
-		 * eine Liste von Teilern dieser Zahl aus
-		 * @param zahl Die Zahl deren Teiler ermittelt werden sollen
-		 * @return List<Integer> Liste der Teiler der Zahl
-		 */
-		public List<Integer> teilerEinerZahl (int zahl) {
-			List<Integer> listoe = new ArrayList<Integer>();
-				for(int i=1; i<=zahl; i++) {
-					if (zahl%i==0) {
-						listoe.add(i);
-					}
-				}
-			return listoe;
+	/**		
+	 * Erhaelt eine Zahl als Eingabe und gibt
+	 * eine Liste von Teilern dieser Zahl aus
+	 * @param zahl Die Zahl deren Teiler ermittelt werden sollen
+	 * @return List<Integer> Liste der Teiler der Zahl
+	 */
+	public List<Integer> teilerEinerZahl (int zahl) {
+		List<Integer> listoe = new ArrayList<Integer>();
+		for(int i=1; i<=zahl; i++) {
+			if (zahl%i==0) {
+				listoe.add(i);
+			}
 		}
+		return listoe;
+	}
 		
 
-		/**
-		 * Hilfsprozedur 10.2.2
-		 * gibt den kleinsten Wert einer Liste(Integer) aus 
-		 * @param list zu bearbeitende Liste
-		 * @return Integer p das kleinste Element der Liste
-		 */
-		public int kleinstesElement (List<Integer> listoe) {
-			int p = 0;
-			for (int i = 0; i <= listoe.size()-1; i ++) {
-				if (i == 0) {
-					p = listoe.get(i);
-				} else
-					if (listoe.get(i) <= p) {
+	/**
+	 * Hilfsprozedur 10.2.2
+	 * gibt den kleinsten Wert einer Liste(Integer) aus 
+	 * @param list zu bearbeitende Liste
+	 * @return Integer p das kleinste Element der Liste
+	 */
+	public int kleinstesElement (List<Integer> listoe) {
+		int p = 0;
+		for (int i = 0; i <= listoe.size()-1; i ++) {
+			if (i == 0) {
+				p = listoe.get(i);
+			} else {
+				if (listoe.get(i) <= p) {
 					p = listoe.get(i);
 				}
 			}
-			return p;
 		}
+		return p;
+	}
 		
 		
-		/**
-		 * Hilfsprozedur für groessterTeiler 10.2.2
-		 * ueberprueft rekursiv ob alle Werte einer List(Integer) durch p teilbar sind
-		 * falls ja wird p ausgegeben, falls nein 0
-		 * @param listoe Liste der Integer
-		 * @param l Der Index des zu bearbeitenden Listenelements 
-		 * @param p Der Teiler
-		 * @return Integer l | 0
-		 */
-		 int help (List<Integer> listoe, int l, int p) {
-			if (listoe.get(l)%p == 0 && l == listoe.size() - 1) {
-				return p;
-			}
-			else
+	/**
+	 * Hilfsprozedur für groessterTeiler 10.2.2
+	 * ueberprueft rekursiv ob alle Werte einer List(Integer) durch p teilbar sind
+	 * falls ja wird p ausgegeben, falls nein 0
+	 * @param listoe Liste der Integer
+	 * @param l Der Index des zu bearbeitenden Listenelements 
+	 * @param p Der Teiler
+	 * @return Integer l | 0
+	 */
+	int help (List<Integer> listoe, int l, int p) {
+		if (listoe.get(l)%p == 0 && l == listoe.size() - 1) {
+			return p;
+		} else { 
 			if (listoe.get(l)%p == 0) {
 				 return help(listoe, l + 1, p);
-			} else
-			return 0;
-		}
-		
-		
-		/**
-		 * 10.2.2
-		 * ueberprueft eine Liste(Integer) und gibt den groessten gemeinsammen Teiler 
-		 * der Liste aus
-		 * @param list Die zu überprüfende Liste 
-		 * @return i Der größte gemeinsame Teiler
-		 */
-		public int groessterTeiler (List<Integer> list) {
-			int p = kleinstesElement(list);
-			for (int i = p; i >= 0; i --) {
-					if (help(list, 0, i) != 0) {
-						return i;
-				}
+			} else {
+				return 0;
 			}
-			return 1;
 		}
+	}
 		
 		
-		/** Hilfsprozedur fuer distance 10.2.3
-		 * Überprüft ob sich eine Zeichenfolge wiederholt
-		 * @param text Die zu überprüfende Zeichenfolge
-		 * @param laenge Länge der Zeichenkette
-		 * @param plp Definiert die die Sequenz und n
-		 * @return int
-		 */
-		public int check (String text, int laenge, int plp) {
-			String sequence = text.substring(plp, laenge + plp);
-			String n = text.substring(sequence.length() + plp, text.length());
-			if (n.contains(sequence)) {
-					for (int p = 0; p <= n.length(); p ++) {
-						if(sequence.equals(n.substring(p, laenge + p))) {
-							return p + laenge;
-						}		
-				} return 0;
-			} else
-				return -1;
+	/**
+	 * 10.2.2
+	 * ueberprueft eine Liste(Integer) und gibt den groessten gemeinsammen Teiler 
+	 * der Liste aus
+	 * @param list Die zu überprüfende Liste 
+	 * @return i Der größte gemeinsame Teiler
+	 */
+	public int groessterTeiler (List<Integer> list) {
+		int p = kleinstesElement(list);
+		for (int i = p; i >= 0; i --) {
+			if (help(list, 0, i) != 0) {
+				return i;
+			}
 		}
+		return 1;
+	}
 		
 		
+	/** Hilfsprozedur fuer distance 10.2.3
+	 * Überprüft ob sich eine Zeichenfolge wiederholt
+	 * @param text Die zu überprüfende Zeichenfolge
+	 * @param laenge Länge der Zeichenkette
+	 * @param plp Definiert die die Sequenz und n
+	 * @return int
+	 */
+	public int check (String text, int laenge, int plp) {
+		String sequence = text.substring(plp, laenge + plp);
+		String n = text.substring(sequence.length() + plp, text.length());
+		if (n.contains(sequence)) {
+			for (int p = 0; p <= n.length(); p ++) {
+				if(sequence.equals(n.substring(p, laenge + p))) {
+					return p + laenge;
+				}		
+			} return 0;
+		} else
+			return -1;
+	}
 		
-		/**
-		 * gibt alle Distanzen aus
-		 * @param text
-		 * @return list <Integer>
-		 */
-		public List<Integer> distance (String text) {
-				List<Integer> listoe = new ArrayList<Integer>();
-			for (int l = laenge; l <= text.length()/2; l ++) {
-				for (int i = 0; i <= text.length() - l; i ++) {
-					if (check(text, l, i) != -1) {
-						listoe.add(check(text, l, i));
-					} 
-				}
-			} return listoe;
-		}
+		
+	/**
+	 * gibt alle Distanzen aus
+	 * @param text
+	 * @return list <Integer>
+	 */
+	public List<Integer> distance (String text) {
+		List<Integer> listoe = new ArrayList<Integer>();
+		for (int l = laenge; l <= text.length()/2; l ++) {
+			for (int i = 0; i <= text.length() - l; i ++) {
+				if (check(text, l, i) != -1) {
+					listoe.add(check(text, l, i));
+				} 
+			}
+		} 
+		return listoe;
+	}
 		
 		/**
 		 * 10.2.4

@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Random;
 
 import de.tudarmstadt.gdi1.project.alphabet.Alphabet;
-import de.tudarmstadt.gdi1.project.alphabet.AlphabetImpl;
 import de.tudarmstadt.gdi1.project.alphabet.Dictionary;
 import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
@@ -20,7 +19,7 @@ import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Monoalphab
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipherImpl;
 
 /**
- * 
+ * Implmentierung des MonoalphabeticKnownCiphertextCryptanalysis Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
@@ -340,7 +339,7 @@ public class MonoalphabeticKnownCiphertextCryptanalysisImpl implements Monoalpha
 					
 					diff *= 1000;
 					
-					fitness += 1/diff;
+					fitness += frequencyWeight/diff;
 					/*if (diff < 0.05) {
 						fitness += i*frequencyWeight;
 					}*/

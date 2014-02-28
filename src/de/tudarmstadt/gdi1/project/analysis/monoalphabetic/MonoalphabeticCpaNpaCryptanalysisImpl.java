@@ -8,7 +8,7 @@ import de.tudarmstadt.gdi1.project.analysis.monoalphabetic.MonoalphabeticCpaNpaC
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.MonoalphabeticCipher;
 
 /**
- * 
+ * Implementierung des MonoalphabeticCpaNpaCryptanalysis Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
@@ -23,6 +23,7 @@ public class MonoalphabeticCpaNpaCryptanalysisImpl implements
 		char[] plainChars = alphabet.asCharArray();
 		String plainCharsString = new String(plainChars);
 		
+		//Wir lassen uns vom verschluesselungs Oracle unser Alphabet verschluesseln und das ist die Loesung.
 		String cipherCharsString = oracle.encrypt(plainCharsString);
 		
 		return cipherCharsString.toCharArray();
@@ -33,6 +34,7 @@ public class MonoalphabeticCpaNpaCryptanalysisImpl implements
 		
 		char[] cipherChars = new char[alphabet.size()];
 		
+		//Wir haben zu unserem Verschluesselungstext den Klartext und uebertragen die Buchstaben, die vorhanden sind.
 		int i = 0;
 		for (Character c : alphabet) {
 			int index = plaintext.indexOf(c);

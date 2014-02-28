@@ -6,12 +6,20 @@ import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 
 /**
- * 
+ * Implementierung des ValidateDecryptionOracle Interfaces.
  * @author Quoc Thong Huynh, ￼Dennis Kuhn, Moritz Matthiesen, ￼Erik Laurin Strelow
  *
  */
 public class ValidateDecryptionOracleImpl implements ValidateDecryptionOracle {
+	
+	/**
+	 * Eine Haeufigkeitsverteilung eines Klartextes.
+	 */
 	private Distribution distribution;
+	
+	/**
+	 * Ein Woerterbuch mit Klartext Woertern.
+	 */
 	private Dictionary dictionary;
 	
 	/**
