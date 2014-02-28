@@ -17,8 +17,8 @@ import de.tudarmstadt.gdi1.project.alphabet.Distribution;
 import de.tudarmstadt.gdi1.project.alphabet.DistributionImpl;
 import de.tudarmstadt.gdi1.project.analysis.caeser.CaesarCryptanalysis;
 import de.tudarmstadt.gdi1.project.analysis.ceaser.CaesarCryptanalysisImpl;
-import de.tudarmstadt.gdi1.project.cipher.monoalphabetic.CaesarImpl;
 import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.Caesar;
+import de.tudarmstadt.gdi1.project.cipher.substitution.monoalphabetic.CaesarImpl;
 import de.tudarmstadt.gdi1.project.test.TemplateTestUtils;
 
 /**

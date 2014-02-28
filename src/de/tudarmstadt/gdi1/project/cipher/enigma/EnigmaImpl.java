@@ -1,11 +1,11 @@
-package src.de.tudarmstadt.gdi1.project.cipher.enigma;
+package de.tudarmstadt.gdi1.project.cipher.enigma;
 import java.util.List;
 
 import de.tudarmstadt.gdi1.project.cipher.enigma.Enigma;
 
 /**
  * 
- * @author Quoc Thong Huynh, ï¿¼Dennis Kuhn, Moritz Matthiesen, ï¿¼Erik Laurin Strelow
+ * @author Quoc Thong Huynh, Dennis Kuhn, Moritz Matthiesen, Erik Laurin Strelow
  *
  */
 public class EnigmaImpl implements Enigma{
@@ -34,7 +34,7 @@ public class EnigmaImpl implements Enigma{
 		for(Character c: chars){
 			transChars[i] = pinboard.translate(c);
 			
-			//Buchstaben durch alle Rotoren prÃ¼geln
+			//Buchstaben durch alle Rotoren prï¿½ï¿½geln
 			for(int j = 0; j < rotors.size(); j++){				
 				transChars[i] = rotors.get(j).translate(transChars[i], true);				
 			}
@@ -63,8 +63,8 @@ public class EnigmaImpl implements Enigma{
 		return result;
 	}
 	/**
-	 * Hilfsprozedur RotationAllRotors: Rotiert stets den Rotor an der Stelle i, prüft ob rotate() true ausgibt (also eine komplette Umdrehung erfolgt ist) und ob es einen
-	 * 									weiteren Rotor gibt, wenn ja wird RotationAllRotors rekursiv für den nächsten Rotor aufgerufen 
+	 * Hilfsprozedur RotationAllRotors: Rotiert stets den Rotor an der Stelle i, prï¿½ft ob rotate() true ausgibt (also eine komplette Umdrehung erfolgt ist) und ob es einen
+	 * 									weiteren Rotor gibt, wenn ja wird RotationAllRotors rekursiv fï¿½r den nï¿½chsten Rotor aufgerufen 
 	 * @param i Der zu rotierende Rotor
 	 */
 	public void RotationAllRotors(int i){
@@ -83,7 +83,7 @@ public class EnigmaImpl implements Enigma{
 		for(Character c: chars){
 			transChars[i] = pinboard.translate(c);
 			
-			//Buchstaben durch alle Rotoren prÃ¼geln
+			//Buchstaben durch alle Rotoren prï¿½ï¿½geln
 			for(int j = 0; j < rotors.size(); j++){				
 				transChars[i] = rotors.get(j).translate(transChars[i], true);				
 			}
